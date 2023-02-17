@@ -9,11 +9,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float dashForce;
     [SerializeField] private float sideBoost; //amout of force added to jump when holding down left or right
-    [SerializeField] private LayerMask groundLayer;
     public float dashTimer;
     private Rigidbody2D playerRb;
     private Transform playerTrans;
     private BoxCollider2D playerBc;
+    private bool onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -60,16 +60,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //jumping
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
+        
 
         //side dash
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Dash();
-        }
+        
 
         if (dashTimer > 0)
         {
@@ -77,9 +71,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            if (horizontalInput > 0 && dashTimer <= 0)
+            {
+                playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+            }
+            else if (horizontalInput < 0 && dashTimer <= 0)
+            {
+                playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+            }
+            dashTimer = 5;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
     private void Jump()
     {
-        if (OnGround())
+        if (onGround)
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -99,32 +115,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool OnGround()
-    {
-        RaycastHit2D box = Physics2D.BoxCast(GetComponent<BoxCollider2D>().bounds.center, GetComponent<BoxCollider2D>().bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        print("box");
-        if (box.collider.gameObject != null)
-        {
-            print(box.collider.CompareTag("Ground"));
-            return box.collider.gameObject.CompareTag("Ground");
-        }
-        return false;
-    }
 
     private void Dash()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        if (dashTimer <= 0 && horizontalInput != 0)
+        if (horizontalInput > 0 && dashTimer <= 0)
         {
-            if (horizontalInput >= 0.01f)
-            {
-                playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
-            }
-            else if (horizontalInput <= -0.01f)
-            {
-                playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
-            }
-            dashTimer = 5;
+            playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+        }
+        else if (horizontalInput < 0 && dashTimer <= 0)
+        {
+            playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+        }
+        dashTimer = 5;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) 
+        {
+            onGround = false;    
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            onGround = true;
         }
     }
 }
