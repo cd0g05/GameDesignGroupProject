@@ -9,11 +9,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float dashForce;
     [SerializeField] private float sideBoost; //amout of force added to jump when holding down left or right
+    private bool onGround;
     public float dashTimer;
     private Rigidbody2D playerRb;
     private Transform playerTrans;
     private BoxCollider2D playerBc;
-    private bool onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -59,10 +59,6 @@ public class PlayerMovement : MonoBehaviour
             playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
         }
 
-        //jumping
-        
-
-        //side dash
         
 
         if (dashTimer > 0)
@@ -73,23 +69,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            if (horizontalInput > 0 && dashTimer <= 0)
-            {
-                playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
-            }
-            else if (horizontalInput < 0 && dashTimer <= 0)
-            {
-                playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
-            }
-            dashTimer = 5;
-        }
-
+        //jumping
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+        }
+
+        //side dash
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Dash();
         }
     }
 
@@ -122,21 +111,12 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput > 0 && dashTimer <= 0)
         {
             playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
-        }
+          }
         else if (horizontalInput < 0 && dashTimer <= 0)
         {
             playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
         }
         dashTimer = 5;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground")) 
-        {
-            onGround = false;    
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -145,5 +125,13 @@ public class PlayerMovement : MonoBehaviour
         {
             onGround = true;
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            onGround = false;
+        }        
     }
 }
