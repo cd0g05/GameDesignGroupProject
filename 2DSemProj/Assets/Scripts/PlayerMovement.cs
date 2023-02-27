@@ -59,7 +59,12 @@ public class PlayerMovement : MonoBehaviour
             playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
         }
 
-        
+        //jumping
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+
 
         if (dashTimer > 0)
         {
@@ -69,14 +74,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //jumping
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
+        
 
         //side dash
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && AbilityIsActive("Dash"))
         {
             Dash();
         }
@@ -133,5 +134,10 @@ public class PlayerMovement : MonoBehaviour
         {
             onGround = false;
         }        
+    }
+
+    public bool AbilityIsActive(string name) 
+    {
+        return false;
     }
 }
