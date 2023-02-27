@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashForce;
     [SerializeField] private float sideBoost; //amout of force added to jump when holding down left or right
     private bool onGround;
+    private bool canDoubleJump;
     public float dashTimer;
     private Rigidbody2D playerRb;
     private Transform playerTrans;
@@ -102,6 +103,12 @@ public class PlayerMovement : MonoBehaviour
                     print("left");
                 }
             }
+            canDoubleJump = true;
+        }
+        else if (canDoubleJump)
+        {
+            playerRb.AddForce(Vector2.up * (jumpForce * .7f), ForceMode2D.Impulse);
+            canDoubleJump = false;
         }
     }
 
