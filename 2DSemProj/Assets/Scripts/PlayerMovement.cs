@@ -40,10 +40,10 @@ public class PlayerMovement : MonoBehaviour
             //playerTrans.position = new Vector3(playerTrans.position.x + speed * horizontalInput * Time.deltaTime, playerTrans.position.y, playerTrans.position.z);
 
             //moving based on force
-            //playerRb.AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Impulse);
 
             //moving based on velocity
-            playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
+            //playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
         }
         else if (horizontalInput <= -0.01) //moving left
         {
@@ -54,10 +54,10 @@ public class PlayerMovement : MonoBehaviour
             //playerTrans.position = new Vector3(playerTrans.position.x + speed * horizontalInput * Time.deltaTime, playerTrans.position.y, playerTrans.position.z);
 
             //moving based on force
-            //playerRb.AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Impulse);
 
             //moving based on velocity
-            playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
+            //playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
         }
 
         //jumping
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+
 
         //side dash
         if (Input.GetKeyDown(KeyCode.Tab) && AbilityIsActive("Dash"))
@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput > 0 && dashTimer <= 0)
         {
             playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
-          }
+        }
         else if (horizontalInput < 0 && dashTimer <= 0)
         {
             playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
@@ -140,10 +140,10 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             onGround = false;
-        }        
+        }
     }
 
-    public bool AbilityIsActive(string name) 
+    public bool AbilityIsActive(string name)
     {
         return false;
     }
