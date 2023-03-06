@@ -15,9 +15,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRb;
     private Transform playerTrans;
     private BoxCollider2D playerBc;
+    public bool movingLeft { get; private set; }
+    public bool movingRight { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
+// Start is called before the first frame update
+void Start()
     {
         //initializing private player variables
         playerRb = GetComponent<Rigidbody2D>();
@@ -31,8 +33,11 @@ public class PlayerMovement : MonoBehaviour
     {
         //moving left and right
         float horizontalInput = Input.GetAxis("Horizontal");
-        if (horizontalInput >= 0.01) //moving right
+        if (horizontalInput > 0) //moving right
         {
+            movingLeft = false;
+            movingRight = true;
+
             //facing right
             playerTrans.localScale = new Vector3(Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
 
@@ -45,8 +50,11 @@ public class PlayerMovement : MonoBehaviour
             //moving based on velocity
             //playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
         }
-        else if (horizontalInput <= -0.01) //moving left
+        else if (horizontalInput < 0) //moving left
         {
+            movingRight = false;
+            movingLeft = true;
+
             //facing left
             playerTrans.localScale = new Vector3(-Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
 
@@ -58,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
 
             //moving based on velocity
             //playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
+        }
+        else
+        {
+            movingRight = false;
+            movingLeft = false;
         }
 
         //jumping
