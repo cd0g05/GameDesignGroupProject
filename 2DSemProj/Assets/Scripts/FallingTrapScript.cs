@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class FallingTrapScript : MonoBehaviour
 {
-    private Rigidbody2D fallingRb;
+    private Rigidbody2D fallingTrapRb;
 
     // Start is called before the first frame update
     void Start()
     {
-        fallingRb = GetComponent<Rigidbody2D>();
+        fallingTrapRb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            fallingRb.isKinematic = false;
+            fallingTrapRb.isKinematic = false;
         }
     }
 
