@@ -12,12 +12,9 @@ public class FallingTrapScript : MonoBehaviour
         fallingTrapRb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Drop()
     {
-        if (collision.CompareTag("Player"))
-        {
-            fallingTrapRb.isKinematic = false;
-        }
+        fallingTrapRb.isKinematic = false;
     }
 
     // Update is called once per frame
