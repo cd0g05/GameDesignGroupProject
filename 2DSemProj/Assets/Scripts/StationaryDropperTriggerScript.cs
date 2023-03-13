@@ -17,7 +17,10 @@ public class StationaryDropperTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        stationaryWalkerScript.Drop();
+        if (collision.CompareTag("Player"))
+        {
+            stationaryWalkerScript.Drop();
+        }
     }
 
     // Update is called once per frame

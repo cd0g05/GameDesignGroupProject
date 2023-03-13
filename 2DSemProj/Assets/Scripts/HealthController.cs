@@ -7,6 +7,8 @@ public class HealthController : MonoBehaviour
 {
     public int playerHealth;
 
+    //private bool iFramesActive = false;
+
     [SerializeField] private Image[] hearts;
 
     // Start is called before the first frame update
@@ -19,16 +21,29 @@ public class HealthController : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < playerHealth)
-            {
-                hearts[i].color = Color.red;
-            }
-            else
-            {
-                hearts[i].color = Color.black;
-            }
+            //if (iFramesActive == false)
+            //{
+                if (i < playerHealth)
+                {
+                    hearts[i].color = Color.red;
+                }
+                else
+                {
+                    hearts[i].color = Color.black;
+                }
+                //iFramesActive = true;
+                //StartCoroutine(IFramesCountdown());
+            //}
         }
     }
+
+    /*IEnumerator IFramesCountdown()
+    {
+        yield return new WaitForSeconds(1);
+        iFramesActive = false;
+    }*/
+
+
 
     /*private void OnTriggerEnter2D(Collider2D collision)
     {

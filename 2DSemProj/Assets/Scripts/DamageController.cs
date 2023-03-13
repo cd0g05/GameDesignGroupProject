@@ -7,6 +7,8 @@ public class DamageController : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private HealthController healthControllerScript;
 
+    private bool iFramesActive = false;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -17,8 +19,19 @@ public class DamageController : MonoBehaviour
 
     void Damage()
     {
-        healthControllerScript.playerHealth = healthControllerScript.playerHealth - damage;
-        healthControllerScript.UpdateHealth();
+        if (iFramesActive == false)
+        {
+            healthControllerScript.playerHealth = healthControllerScript.playerHealth - damage;
+            healthControllerScript.UpdateHealth();
+            iFramesActive = true;
+            StartCoroutine(IFramesCountdown());
+        }
+    }
+
+    IEnumerator IFramesCountdown()
+    {
+        yield return new WaitForSeconds(1);
+        iFramesActive = false;
     }
 
     // Start is called before the first frame update
