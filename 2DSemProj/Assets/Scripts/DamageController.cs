@@ -6,6 +6,7 @@ public class DamageController : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private HealthController healthControllerScript;
+    GameObject healthController;
 
     private bool iFramesActive = false;
 
@@ -13,7 +14,10 @@ public class DamageController : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Damage();
+            if (iFramesActive == false)
+            {
+                Damage();
+            }
         }
     }
 
@@ -37,7 +41,8 @@ public class DamageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthController = GameObject.Find("HealthController");
+        healthControllerScript = healthController.GetComponent<HealthController>();
     }
 
     // Update is called once per frame
