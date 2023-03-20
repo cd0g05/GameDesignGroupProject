@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 126066189}
   - component: {fileID: 126066191}
   - component: {fileID: 126066192}
+  - component: {fileID: 126066193}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -258,6 +259,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &126066192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +283,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isUnlocked: 1
+--- !u!114 &126066193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126066187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca665344ceab5d4783c761aa8b8b8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 1bb5ccfea1c3a7e42bb49e4015ea6d2a, type: 2}
 --- !u!1 &193548806
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
 --- !u!1 &275682960
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 275682962}
   - component: {fileID: 275682961}
+  - component: {fileID: 275682963}
   m_Layer: 0
   m_Name: InventorySystem
   m_TagString: Untagged
@@ -476,6 +503,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &275682963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275682960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628fd08c1453fa44dbf3846841fcdb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  b1: {fileID: 1484666321}
 --- !u!1 &330265326
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +766,7 @@ GameObject:
   - component: {fileID: 532014884}
   - component: {fileID: 532014886}
   - component: {fileID: 532014887}
+  - component: {fileID: 532014888}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -860,7 +901,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 0
+  isUnlocked: 1
+--- !u!114 &532014888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532014882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca665344ceab5d4783c761aa8b8b8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 2651c6ccd330f8e498955ea49cba64c9, type: 2}
 --- !u!1 &564155943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,7 +1480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
 --- !u!1 &987166756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,7 +1965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
 --- !u!1 &1471248330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +2113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
 --- !u!1 &1484666317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,6 +2127,7 @@ GameObject:
   - component: {fileID: 1484666319}
   - component: {fileID: 1484666321}
   - component: {fileID: 1484666322}
+  - component: {fileID: 1484666323}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2195,6 +2250,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1484666322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,6 +2275,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+--- !u!114 &1484666323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484666317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca665344ceab5d4783c761aa8b8b8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 2558dc3850700c5429b50a07b036687f, type: 2}
 --- !u!1 &1511735267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,7 +2753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
 --- !u!1 &1564185225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2821,7 +2901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
 --- !u!1 &1660559984
 GameObject:
   m_ObjectHideFlags: 0
@@ -3324,6 +3404,7 @@ GameObject:
   - component: {fileID: 1844102320}
   - component: {fileID: 1844102322}
   - component: {fileID: 1844102323}
+  - component: {fileID: 1844102324}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -3459,6 +3540,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
+--- !u!114 &1844102324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844102318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca665344ceab5d4783c761aa8b8b8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 572790330b6e7ae44b53a113fc86e22b, type: 2}
 --- !u!1 &1985425849
 GameObject:
   m_ObjectHideFlags: 0
