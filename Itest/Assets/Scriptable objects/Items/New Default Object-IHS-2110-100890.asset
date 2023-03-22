@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18dde894587181b4f989df82890d2125, type: 3}
-  m_Name: Inventory
+  m_Script: {fileID: 11500000, guid: 013a00527449ece45adb2a36dd2adb96, type: 3}
+  m_Name: New Default Object
   m_EditorClassIdentifier: 
-  Container:
-  - item: {fileID: 11400000, guid: 2558dc3850700c5429b50a07b036687f, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: 1bb5ccfea1c3a7e42bb49e4015ea6d2a, type: 2}
-    amount: 2
+  prefab: {fileID: 4537135605510632751, guid: 2abb85ccc811c9548bb18717d38a404e, type: 3}
+  name: Item2
+  type: 2

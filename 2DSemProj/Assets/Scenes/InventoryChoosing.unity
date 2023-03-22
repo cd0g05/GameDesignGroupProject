@@ -264,8 +264,8 @@ MonoBehaviour:
         m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryObject, Assembly-CSharp
+          m_ObjectArgument: {fileID: 126066191}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628fd08c1453fa44dbf3846841fcdb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b1: {fileID: 1484666321}
+  Inventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &330265326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,8 +2255,8 @@ MonoBehaviour:
         m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryObject, Assembly-CSharp
+          m_ObjectArgument: {fileID: 1484666321}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerInventoryStuff : MonoBehaviour
 {
-
-    public Button b1;
+    public InventoryObject Inventory;
     
-    public void addItem(InventoryObject Inventory)
+    public void addItem(Button b1)
     {
         Debug.Log("test");
         var item = b1.GetComponent<ItemThink>();
