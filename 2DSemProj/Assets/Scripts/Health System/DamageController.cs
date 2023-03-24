@@ -8,34 +8,23 @@ public class DamageController : MonoBehaviour
     [SerializeField] private HealthController healthControllerScript;
     GameObject healthController;
 
-    private bool iFramesActive = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            if (iFramesActive == false)
-            {
-                Damage();
-            }
+            Damage();
         }
     }
 
     void Damage()
     {
-        if (iFramesActive == false)
+        if (healthControllerScript.canTakeDamage)
         {
             healthControllerScript.playerHealth = healthControllerScript.playerHealth - damage;
             healthControllerScript.UpdateHealth();
-            iFramesActive = true;
-            StartCoroutine(IFramesCountdown());
+            healthControllerScript.PlayerDamage();
         }
-    }
-
-    IEnumerator IFramesCountdown()
-    {
-        yield return new WaitForSeconds(1);
-        iFramesActive = false;
     }
 
     // Start is called before the first frame update

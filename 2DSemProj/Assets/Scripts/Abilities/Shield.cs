@@ -12,7 +12,7 @@ public class Shield : MonoBehaviour
         shieldTimer = 5;
         shieldCooldown = 5;
         transform.parent = GameObject.Find("Player").transform;
-        transform.localPosition = new Vector2(0.55f, 0);
+        transform.localPosition = new Vector2(0.55f, 0.01f);
         GameObject.Find("Shield").GetComponent<SpriteRenderer>().enabled = false;
         GameObject.Find("Shield").GetComponent<BoxCollider2D>().enabled = false;
     }
@@ -31,7 +31,10 @@ public class Shield : MonoBehaviour
             GameObject.Find("Shield").GetComponent<SpriteRenderer>().enabled = true;
             GameObject.Find("Shield").GetComponent<BoxCollider2D>().enabled = true;
             shieldCooldown = 10;
-            GameObject.Find("HealthController").GetComponent<HealthController>().UseShield(shieldTimer);
+           // GameObject.Find("HealthController").GetComponent<HealthController>().UseShield(shieldTimer);
         }
     }
 }
+
+/*DON'T USE THIS ONE, USE PLAYERSHIELD
+ * */
