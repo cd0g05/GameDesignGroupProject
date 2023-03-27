@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &618620020
 Transform:
   m_ObjectHideFlags: 0
@@ -18657,10 +18657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57e32dc827b37b4d903881ae32d15ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 2
   jumpForce: 7
   dashForce: 30
   sideBoost: 30
+  maxVelocity: {x: 10, y: 0}
+  slowDown: 0.5
   dashTimer: 5
 --- !u!50 &1425374555
 Rigidbody2D:
@@ -18677,7 +18679,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.9
+  m_GravityScale: 0.95
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -18769,7 +18771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425374553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.8, y: 32.1, z: 0}
+  m_LocalPosition: {x: -19.1, y: 14.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18921,7 +18923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1816716025
 Transform:
   m_ObjectHideFlags: 0
@@ -19258,7 +19260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2059641921
 MonoBehaviour:
   m_ObjectHideFlags: 0

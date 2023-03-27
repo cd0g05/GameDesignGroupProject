@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float dashForce;
     [SerializeField] private float sideBoost; //amout of force added to jump when holding down left or right
+    [SerializeField] private Vector2 maxVelocity;
+    [SerializeField] private float slowDown;
     private bool onGround;
     private bool canDoubleJump;
     public float dashTimer;
@@ -31,13 +33,11 @@ void Start()
     // Update is called once per frame
     void Update()
     {
+        print(playerRb.velocity);
         //moving left and right
         float horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput > 0) //moving right
         {
-            movingLeft = false;
-            movingRight = true;
-
             //facing right
             playerTrans.localScale = new Vector3(Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
 
@@ -45,27 +45,82 @@ void Start()
             //playerTrans.position = new Vector3(playerTrans.position.x + speed * horizontalInput * Time.deltaTime, playerTrans.position.y, playerTrans.position.z);
 
             //moving based on force
-            playerRb.AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Impulse);
+            //playerRb.AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Impulse);
 
             //moving based on velocity
-            //playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
+            //if they are on ground
+            if (onGround)
+            {
+                if (playerRb.velocity.x < maxVelocity.x + 0.5)
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed), playerRb.velocity.y);
+                }
+                else
+                {
+                    playerRb.velocity = playerRb.velocity;
+                }
+            }
+            else
+            {
+                //if they are in the air
+               // if (movingLeft)
+               // {
+                    if (playerRb.velocity.x < (maxVelocity.x + 0.5))
+                    {
+                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .017f), playerRb.velocity.y);
+                    }
+                    else
+                    {
+                        playerRb.velocity = playerRb.velocity;
+                    }
+               // }
+            }
+
+            movingLeft = false;
+            movingRight = true;
         }
         else if (horizontalInput < 0) //moving left
         {
-            movingRight = false;
-            movingLeft = true;
-
             //facing left
             playerTrans.localScale = new Vector3(-Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
 
             //moving based on postion
-            //playerTrans.position = new Vector3(playerTrans.position.x + speed * horizontalInput * Time.deltaTime, playerTrans.position.y, playerTrans.position.z);
+            playerTrans.position = new Vector3(playerTrans.position.x + speed * horizontalInput * Time.deltaTime, playerTrans.position.y, playerTrans.position.z);
 
             //moving based on force
-            playerRb.AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Impulse);
+            //playerRb.AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Impulse);
 
             //moving based on velocity
-            //playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
+            if (onGround)
+            {
+                if (playerRb.velocity.x > -maxVelocity.x)
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed), playerRb.velocity.y);
+                }
+                else
+                {
+                    playerRb.velocity = playerRb.velocity;
+                }
+            }
+            else
+            {
+                //if (movingRight)
+                //{
+                    if (playerRb.velocity.x > -maxVelocity.x)
+                    {
+                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .017f), playerRb.velocity.y);
+                    }
+                    else
+                    {
+                        playerRb.velocity = playerRb.velocity;
+                    }
+               // }
+            }
+
+
+
+            movingRight = false;
+            movingLeft = true;
         }
         else
         {
@@ -120,7 +175,7 @@ void Start()
         }
         else if (canDoubleJump)
         {
-            playerRb.AddForce(Vector2.up * (jumpForce * .7f), ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.up * (jumpForce * .5f), ForceMode2D.Impulse);
             canDoubleJump = false;
         }
     }
