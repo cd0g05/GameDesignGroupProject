@@ -18661,7 +18661,7 @@ MonoBehaviour:
   jumpForce: 7
   dashForce: 30
   sideBoost: 30
-  maxVelocity: {x: 10, y: 0}
+  maxVelocity: {x: 7, y: 0}
   slowDown: 0.5
   dashTimer: 5
 --- !u!50 &1425374555

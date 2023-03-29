@@ -67,7 +67,7 @@ void Start()
                // {
                     if (playerRb.velocity.x < (maxVelocity.x + 0.5))
                     {
-                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .017f), playerRb.velocity.y);
+                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
                     else
                     {
@@ -108,7 +108,7 @@ void Start()
                 //{
                     if (playerRb.velocity.x > -maxVelocity.x)
                     {
-                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .017f), playerRb.velocity.y);
+                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
                     else
                     {
