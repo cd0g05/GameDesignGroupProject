@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sideBoost; //amout of force added to jump when holding down left or right
     [SerializeField] private Vector2 maxVelocity;
     [SerializeField] private float slowDown;
-    private bool onGround;
+    [SerializeField] private bool onGround;
     private bool canDoubleJump;
     public float dashTimer;
     private Rigidbody2D playerRb;
     private Transform playerTrans;
     private BoxCollider2D playerBc;
+    [SerializeField] private bool onSlope;
+    private Transform lastFrameTrans;
     public bool movingLeft { get; private set; }
     public bool movingRight { get; private set; }
 
@@ -28,6 +30,7 @@ void Start()
         playerBc = GetComponent<BoxCollider2D>();
         playerTrans = GetComponent<Transform>();
         dashTimer = 5;
+        lastFrameTrans = transform;
     }
 
     // Update is called once per frame
@@ -41,17 +44,11 @@ void Start()
             //facing right
             playerTrans.localScale = new Vector3(Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
 
-            //moving based on position
-            //playerTrans.position = new Vector3(playerTrans.position.x + speed * horizontalInput * Time.deltaTime, playerTrans.position.y, playerTrans.position.z);
-
-            //moving based on force
-            //playerRb.AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Impulse);
-
             //moving based on velocity
             //if they are on ground
             if (onGround)
             {
-                if (playerRb.velocity.x < maxVelocity.x + 0.5)
+                if (playerRb.velocity.x < maxVelocity.x)
                 {
                     playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed), playerRb.velocity.y);
                 }
@@ -60,12 +57,40 @@ void Start()
                     playerRb.velocity = playerRb.velocity;
                 }
             }
-            else
+
+            //if they are in the air velocity is slowed down
+            else if (!onGround && !onSlope)
             {
-                //if they are in the air
-               // if (movingLeft)
-               // {
-                    if (playerRb.velocity.x < (maxVelocity.x + 0.5))
+                if (playerRb.velocity.x < (maxVelocity.x - 0.5f))
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
+                }
+                else
+                {
+                    playerRb.velocity = playerRb.velocity;
+                }
+            }
+
+            //player is on a slope
+            else if (onSlope)
+            {
+                //if player is going up, speed is slower
+            //    if (transform.position.y > lastFrameTrans.position.y)
+            //    {
+                    if (playerRb.velocity.x < (maxVelocity.x - 3))
+                    {
+                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
+                    }
+              //      else
+                //    {
+                  //      playerRb.velocity = playerRb.velocity;
+                    //}
+               // }
+
+                //player is going down, speed is faster
+                /*else if (transform.position.y < lastFrameTrans.position.y)
+                {
+                    if (playerRb.velocity.x < (maxVelocity.x + 1))
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -73,7 +98,7 @@ void Start()
                     {
                         playerRb.velocity = playerRb.velocity;
                     }
-               // }
+                }*/
             }
 
             movingLeft = false;
@@ -83,12 +108,6 @@ void Start()
         {
             //facing left
             playerTrans.localScale = new Vector3(-Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
-
-            //moving based on postion
-            playerTrans.position = new Vector3(playerTrans.position.x + speed * horizontalInput * Time.deltaTime, playerTrans.position.y, playerTrans.position.z);
-
-            //moving based on force
-            //playerRb.AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Impulse);
 
             //moving based on velocity
             if (onGround)
@@ -102,11 +121,27 @@ void Start()
                     playerRb.velocity = playerRb.velocity;
                 }
             }
-            else
+
+            //if player is in air, speed is slowed
+            else if (!onSlope && !onGround)
             {
-                //if (movingRight)
-                //{
-                    if (playerRb.velocity.x > -maxVelocity.x)
+                if (playerRb.velocity.x > -maxVelocity.x + 0.5f)
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
+                }
+                else
+                {
+                    playerRb.velocity = playerRb.velocity;
+                }
+            }
+
+            //player is on a slope
+            else if (onSlope)
+            {
+                //if player is going up, speed is slower
+                if (transform.position.y > lastFrameTrans.position.y)
+                {
+                    if (playerRb.velocity.x > (-maxVelocity.x + 0.5f))
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -114,7 +149,20 @@ void Start()
                     {
                         playerRb.velocity = playerRb.velocity;
                     }
-               // }
+                }
+
+                //player is going down, speed is faster
+                else if (transform.position.y < lastFrameTrans.position.y)
+                {
+                    if (playerRb.velocity.x > (-maxVelocity.x - 1))
+                    {
+                        playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
+                    }
+                    else
+                    {
+                        playerRb.velocity = playerRb.velocity;
+                    }
+                }
             }
 
 
@@ -128,6 +176,11 @@ void Start()
             movingLeft = false;
         }
 
+        if (playerRb.velocity.y < -maxVelocity.y)
+        {
+            playerRb.velocity = new Vector2(playerRb.velocity.x, -maxVelocity.y);
+        }
+
         //jumping
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -139,6 +192,8 @@ void Start()
         {
             dashTimer -= Time.deltaTime;
         }
+
+        lastFrameTrans = transform;
     }
 
     private void FixedUpdate()
@@ -201,6 +256,10 @@ void Start()
         {
             onGround = true;
         }
+        if (collision.gameObject.CompareTag("Slope"))
+        {
+            onSlope = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -208,6 +267,10 @@ void Start()
         if (collision.gameObject.CompareTag("Ground"))
         {
             onGround = false;
+        }
+        if (collision.gameObject.CompareTag("Slope"))
+        {
+            onSlope = false;
         }
     }
 
