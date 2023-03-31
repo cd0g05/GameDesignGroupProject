@@ -12,13 +12,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 maxVelocity;
     [SerializeField] private float slowDown;
     [SerializeField] private bool onGround;
+    private int count; //for position update
     private bool canDoubleJump;
     public float dashTimer;
     private Rigidbody2D playerRb;
     private Transform playerTrans;
     private BoxCollider2D playerBc;
     [SerializeField] private bool onSlope;
-    private Transform lastFrameTrans;
+    [SerializeField] private Vector3 lastFramePos;
     public bool movingLeft { get; private set; }
     public bool movingRight { get; private set; }
 
@@ -30,7 +31,7 @@ void Start()
         playerBc = GetComponent<BoxCollider2D>();
         playerTrans = GetComponent<Transform>();
         dashTimer = 5;
-        lastFrameTrans = transform;
+        lastFramePos = transform.position;
     }
 
     // Update is called once per frame
@@ -54,7 +55,7 @@ void Start()
                 }
                 else
                 {
-                    playerRb.velocity = playerRb.velocity;
+                    playerRb.velocity = new Vector2(maxVelocity.x, playerRb.velocity.y);
                 }
             }
 
@@ -67,7 +68,7 @@ void Start()
                 }
                 else
                 {
-                    playerRb.velocity = playerRb.velocity;
+                    playerRb.velocity = new Vector2(maxVelocity.x - 0.5f, playerRb.velocity.y);
                 }
             }
 
@@ -75,22 +76,23 @@ void Start()
             else if (onSlope)
             {
                 //if player is going up, speed is slower
-            //    if (transform.position.y > lastFrameTrans.position.y)
-            //    {
-                    if (playerRb.velocity.x < (maxVelocity.x - 3))
+                if (transform.position.y > lastFramePos.y)
+                {
+                    if (playerRb.velocity.x < (maxVelocity.x - 2.5f))
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
-              //      else
-                //    {
-                  //      playerRb.velocity = playerRb.velocity;
-                    //}
-               // }
+
+                    else
+                    {
+                        playerRb.velocity = new Vector2(maxVelocity.x - 2.5f, playerRb.velocity.y);
+                    }
+                }
 
                 //player is going down, speed is faster
-                /*else if (transform.position.y < lastFrameTrans.position.y)
+                else if (transform.position.y < lastFramePos.y)
                 {
-                    if (playerRb.velocity.x < (maxVelocity.x + 1))
+                    if (playerRb.velocity.x < (maxVelocity.x + 1.5f))
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -98,7 +100,7 @@ void Start()
                     {
                         playerRb.velocity = playerRb.velocity;
                     }
-                }*/
+                }
             }
 
             movingLeft = false;
@@ -118,7 +120,7 @@ void Start()
                 }
                 else
                 {
-                    playerRb.velocity = playerRb.velocity;
+                    playerRb.velocity = new Vector2(-maxVelocity.x, playerRb.velocity.y);
                 }
             }
 
@@ -131,7 +133,7 @@ void Start()
                 }
                 else
                 {
-                    playerRb.velocity = playerRb.velocity;
+                    playerRb.velocity = new Vector2(-maxVelocity.x + 0.5f, playerRb.velocity.y);
                 }
             }
 
@@ -139,22 +141,22 @@ void Start()
             else if (onSlope)
             {
                 //if player is going up, speed is slower
-                if (transform.position.y > lastFrameTrans.position.y)
+                if (transform.position.y > lastFramePos.y)
                 {
-                    if (playerRb.velocity.x > (-maxVelocity.x + 0.5f))
+                    if (playerRb.velocity.x > (-maxVelocity.x + 2.5f))
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
                     else
                     {
-                        playerRb.velocity = playerRb.velocity;
+                        playerRb.velocity = new Vector2(-maxVelocity.x + 2.5f, playerRb.velocity.y);
                     }
                 }
 
                 //player is going down, speed is faster
-                else if (transform.position.y < lastFrameTrans.position.y)
+                else if (transform.position.y < lastFramePos.y)
                 {
-                    if (playerRb.velocity.x > (-maxVelocity.x - 1))
+                    if (playerRb.velocity.x > (-maxVelocity.x - 1.5f))
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -193,7 +195,11 @@ void Start()
             dashTimer -= Time.deltaTime;
         }
 
-        lastFrameTrans = transform;
+        if (count % 5 == 0)
+        {
+            lastFramePos = transform.position;
+        }
+        count++;
     }
 
     private void FixedUpdate()
