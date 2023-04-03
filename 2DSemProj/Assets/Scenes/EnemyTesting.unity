@@ -1689,12 +1689,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57e32dc827b37b4d903881ae32d15ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 1
   jumpForce: 5
   dashForce: 30
   sideBoost: 30
-  maxVelocity: {x: 10, y: 0}
+  maxVelocity: {x: 10, y: 10}
+  slowDown: 0
+  onGround: 0
   dashTimer: 5
+  onSlope: 0
 --- !u!50 &698233318
 Rigidbody2D:
   serializedVersion: 4
