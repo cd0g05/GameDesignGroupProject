@@ -37,7 +37,7 @@ public class WalkerEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Walls"))
+        if (collision.gameObject.CompareTag("Walls") || collision.gameObject.CompareTag("Player"))
         {
             walkingRight = !walkingRight;
             if(walkingRight)
