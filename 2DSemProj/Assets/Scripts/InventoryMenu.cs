@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class InventoryMenu : MonoBehaviour
 {
     [SerializeField] private List<Button> inventoryButtons = new List<Button>();
+    [SerializeField] private Button continueButton;
     private ScriptableObject gameInevntory;
     public bool playerInventoryFull { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
+        playerInventoryFull = false;
         foreach (Button item in inventoryButtons)
         {
             if (!item.GetComponent<InventoryButton>().isUnlocked)
@@ -22,6 +24,16 @@ public class InventoryMenu : MonoBehaviour
             {
                 item.GetComponent<Image>().color = Color.white;
             }
+        }
+
+        //setting continue button color
+        if (!playerInventoryFull)
+        {
+            continueButton.GetComponent<Image>().color = Color.gray;
+        }
+        else
+        {
+            continueButton.GetComponent<Image>().color = Color.white;
         }
 
     }
