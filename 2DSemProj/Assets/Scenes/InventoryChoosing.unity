@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
+  Isystem: {fileID: 275682960}
 --- !u!1 &330265326
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +881,18 @@ MonoBehaviour:
       - m_Target: {fileID: 275682961}
         m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
         m_MethodName: SelectOrDeselectItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 532014886}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 532014886}
@@ -3518,6 +3531,18 @@ MonoBehaviour:
       - m_Target: {fileID: 275682961}
         m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
         m_MethodName: SelectOrDeselectItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1844102322}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1844102322}
