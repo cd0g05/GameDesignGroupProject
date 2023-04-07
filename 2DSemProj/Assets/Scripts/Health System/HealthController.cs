@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthController : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class HealthController : MonoBehaviour
             player.GetComponent<PlayerMovement>().enabled = false;
             player.GetComponent<Transform>().Rotate(new Vector3(0, 0, 90));
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void PlayerDamage()
