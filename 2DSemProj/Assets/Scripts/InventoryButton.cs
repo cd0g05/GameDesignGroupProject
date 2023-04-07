@@ -6,11 +6,18 @@ public class InventoryButton : MonoBehaviour
 {
     public bool isSelected { get; private set; }
     public bool isUnlocked;//{ get; private set; }
+    [SerializeField] private string abilityName;
 
+    public InventoryObject abilityInventory;
+
+    private void Awake()
+    {
+        CheckToSeeUnlocked();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        isSelected = false;
     }
 
     // Update is called once per frame
@@ -23,5 +30,18 @@ public class InventoryButton : MonoBehaviour
     {
         //check if there are already 3 items selected
         isSelected = !isSelected;
+    }
+
+    private void CheckToSeeUnlocked()
+    {
+        for (int k = 0; k < abilityInventory.Container.Count; k++)
+        {
+            if (abilityInventory.Container[k].item.name.Equals(abilityName))
+            {
+                isUnlocked = true;
+                return;
+            }
+        }
+        isUnlocked = false;
     }
 }

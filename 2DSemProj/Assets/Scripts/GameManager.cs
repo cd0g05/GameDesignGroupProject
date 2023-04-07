@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Camera mainCam;
     [SerializeField] private Vector2 levelSelectPos;
+    [SerializeField] GameObject inventoryNotFullMessage;
 
     // Start is called before the first frame update
     void Start()
@@ -53,5 +54,24 @@ public class GameManager : MonoBehaviour
     public void InventoryToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelector");
+    }
+
+    public void InventoryToLevel()
+    {
+        if (GameObject.Find("InventorySystem").GetComponent<InventoryMenu>().playerInventoryFull)
+        {
+            SceneManager.LoadScene(GameObject.Find("LevelSelector").GetComponent<LevelSelected>().selectedLevel);
+        }
+        else
+        {
+            StartCoroutine(InventoryNotFullMessage());
+        }
+    }
+
+    private IEnumerator InventoryNotFullMessage()
+    {
+        inventoryNotFullMessage.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        inventoryNotFullMessage.SetActive(false);
     }
 }
