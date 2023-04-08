@@ -13,13 +13,37 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
+        {
+            GameObject.Find("LevelCanvas").SetActive(true);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        //shortcuts
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            //restarts scene
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                print("Restart");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            //loads title screen
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                print("Title");
+                SceneManager.LoadScene("Title");
+            }
+
+            if (Input.GetMouseButtonDown(0) && SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
+            {
+                GameObject.Find("Player").GetComponent<Transform>().position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
+        }
     }
 
     //switches from start screen to level select
@@ -74,4 +98,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         inventoryNotFullMessage.SetActive(false);
     }
+
+    public void PauseGame()
+    {
+        GameObject.Find("PauseButton").SetActive(false);
+        GameObject.Find("PauseMenu").SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    
 }

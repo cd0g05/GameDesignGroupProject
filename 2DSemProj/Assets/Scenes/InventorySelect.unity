@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1660559986}
-  levelSelectPos: {x: 0, y: 0}
+  levelSelectPos: {x: 0, y: 30}
   inventoryNotFullMessage: {fileID: 848028736}
 --- !u!4 &453338109
 Transform:
