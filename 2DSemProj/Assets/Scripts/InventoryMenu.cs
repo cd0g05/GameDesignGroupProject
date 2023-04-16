@@ -27,14 +27,7 @@ public class InventoryMenu : MonoBehaviour
         }
 
         //setting continue button color
-        if (!playerInventoryFull)
-        {
-            continueButton.GetComponent<Image>().color = Color.gray;
-        }
-        else
-        {
-            continueButton.GetComponent<Image>().color = Color.white;
-        }
+        continueButton.GetComponent<Image>().color = Color.white;
 
     }
 

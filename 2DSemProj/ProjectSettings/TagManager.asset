@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Enemy
   - Walls
+  - SelectedLevel
+  - LevelButton
+  - LevelCanvas
+  - CompletedLevel
   layers:
   - Default
   - TransparentFX

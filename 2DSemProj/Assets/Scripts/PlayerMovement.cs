@@ -37,7 +37,7 @@ void Start()
     // Update is called once per frame
     void Update()
     {
-        print(playerRb.velocity);
+        //print(playerRb.velocity);
         //moving left and right
         float horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput > 0) //moving right
@@ -64,7 +64,7 @@ void Start()
             {
                 if (playerRb.velocity.x < (maxVelocity.x - 0.5f))
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .5f), playerRb.velocity.y);
                 }
                 else
                 {
@@ -129,7 +129,7 @@ void Start()
             {
                 if (playerRb.velocity.x > -maxVelocity.x + 0.5f)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .5f), playerRb.velocity.y);
                 }
                 else
                 {

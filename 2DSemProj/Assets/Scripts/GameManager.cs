@@ -82,22 +82,9 @@ public class GameManager : MonoBehaviour
 
     public void InventoryToLevel()
     {
-        if (GameObject.Find("InventorySystem").GetComponent<InventoryMenu>().playerInventoryFull)
-        {
-            SceneManager.LoadScene(GameObject.Find("LevelSelector").GetComponent<LevelSelected>().selectedLevel);
-        }
-        else
-        {
-            StartCoroutine(InventoryNotFullMessage());
-        }
+        SceneManager.LoadScene(GameObject.Find("LevelSelected").GetComponent<LevelSelected>().selectedLevel);
     }
 
-    private IEnumerator InventoryNotFullMessage()
-    {
-        inventoryNotFullMessage.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-        inventoryNotFullMessage.SetActive(false);
-    }
 
     public void PauseGame()
     {
