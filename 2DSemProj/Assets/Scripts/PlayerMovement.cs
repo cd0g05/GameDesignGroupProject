@@ -42,10 +42,17 @@ void Start()
         if (box && (box.collider.gameObject.CompareTag("Ground")))
         {
             onGround = true;
+            onSlope = false;
         }
         else if (box && (box.collider.gameObject.CompareTag("Slope")))
         {
             onSlope = true;
+            onGround = false;
+        }
+        else
+        {
+            onGround = false;
+            onSlope = false;
         }
 
 
