@@ -37,6 +37,18 @@ void Start()
     // Update is called once per frame
     void Update()
     {
+        //seeing if on ground
+        RaycastHit2D box = Physics2D.BoxCast(playerBc.bounds.center, playerBc.bounds.size, 0, Vector2.down, 0.1f);
+        if (box && (box.collider.gameObject.CompareTag("Ground")))
+        {
+            onGround = true;
+        }
+        else if (box && (box.collider.gameObject.CompareTag("Slope")))
+        {
+            onSlope = true;
+        }
+
+
         //print(playerRb.velocity);
         //moving left and right
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -215,7 +227,7 @@ void Start()
 
     private void Jump()
     {
-        if (onGround)
+        if (onGround || onSlope)
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             float horizontalInput = Input.GetAxis("Horizontal");
