@@ -8,6 +8,7 @@ public class Sword : MonoBehaviour
     private Animator swordAnimator;
     private Animation swordAnimation;
     private float swingCountdown;
+    private bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,9 @@ public class Sword : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && swingCountdown <= 0)
         {
             swordAnimator.SetTrigger("Swing");
-            swingCountdown = 3;
+            swingCountdown = .75f;
+            isAttacking = true;
+            StartCoroutine(AttackingCountdown());
         }
 
         if (swingCountdown > 0)
@@ -34,12 +37,34 @@ public class Sword : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (swordAnimation.IsPlaying("Swing") && collision.gameObject.CompareTag("Enemy"))
-        {
-            //collision.gameObject.GetComponent<EnemyHealth>().AddDamage(damage);
+        
+    }
 
+    private IEnumerator AttackingCountdown()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isAttacking = false;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        print(collision.gameObject.name);
+        if (isAttacking && collision.gameObject.CompareTag("Enemy"))
+        {
+            print("Hit");
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        print(collision.gameObject.name);
+        if (isAttacking && collision.gameObject.CompareTag("Enemy"))
+        {
+            print("Hit");
+            Destroy(collision.gameObject);
         }
     }
 }

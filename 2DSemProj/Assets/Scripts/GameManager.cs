@@ -47,15 +47,21 @@ public class GameManager : MonoBehaviour
     }
 
     //switches from start screen to level select
-    public void StartToLevelSelect()
+    public void ToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelector");
     }
 
     //moves from level select to start
-    public void LevelSelectToStart()
+    public void ToStart()
     {
         SceneManager.LoadScene("Title");
+    }
+
+    //moves to controls scene
+    public void ToControlsScene()
+    {
+        SceneManager.LoadScene("Controls Scene");
     }
 
 

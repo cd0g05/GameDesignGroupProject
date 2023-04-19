@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Item1
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  name: Item1
+  name: Sword
   type: 2

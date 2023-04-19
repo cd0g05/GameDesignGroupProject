@@ -49,11 +49,11 @@ void Start()
             onSlope = true;
             onGround = false;
         }
-        else
+        /*else
         {
             onGround = false;
             onSlope = false;
-        }
+        }*/
 
 
         //print(playerRb.velocity);
@@ -255,7 +255,7 @@ void Start()
         }
         else if (canDoubleJump)
         {
-            playerRb.AddForce(Vector2.up * (jumpForce * .5f), ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.up * (jumpForce * .9f), ForceMode2D.Impulse);
             canDoubleJump = false;
         }
     }
