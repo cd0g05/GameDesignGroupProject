@@ -930,6 +930,9 @@ MonoBehaviour:
   mainCam: {fileID: 1660559986}
   levelSelectPos: {x: 0, y: 30}
   inventoryNotFullMessage: {fileID: 848028736}
+  pauseCanvas: {fileID: 0}
+  pauseButton: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!4 &453338109
 Transform:
   m_ObjectHideFlags: 0
@@ -3312,7 +3315,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 453338108}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: InventoryToLevelSelect
+        m_MethodName: ToLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -8,15 +8,21 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Camera mainCam;
     [SerializeField] private Vector2 levelSelectPos;
-    [SerializeField] GameObject inventoryNotFullMessage;
+    [SerializeField] private GameObject inventoryNotFullMessage;
+
+    // for pause menu
+    [SerializeField] private GameObject pauseButton;
+    [SerializeField] private GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         if (SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
         {
-            GameObject.Find("LevelCanvas").SetActive(true);
+            pauseButton.SetActive(true);
         }
+        pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,14 +35,14 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 print("Restart");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                RestartScene();
             }
 
             //loads title screen
             if (Input.GetKeyDown(KeyCode.T))
             {
                 print("Title");
-                SceneManager.LoadScene("Title");
+                ToStart();
             }
 
             if (Input.GetMouseButtonDown(0) && SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
@@ -46,13 +52,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //switches from start screen to level select
+    // restarts scene
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // loads level select scene
     public void ToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelector");
     }
 
-    //moves from level select to start
+    //moves to start scene
     public void ToStart()
     {
         SceneManager.LoadScene("Title");
@@ -80,24 +93,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //moves from inventory selection back to start screen
-    public void InventoryToLevelSelect()
-    {
-        SceneManager.LoadScene("LevelSelector");
-    }
-
+    // loads selected level
     public void InventoryToLevel()
     {
         SceneManager.LoadScene(GameObject.Find("LevelSelected").GetComponent<LevelSelected>().selectedLevel);
     }
 
 
+    // freezes game and brings up pause menu
     public void PauseGame()
     {
-        GameObject.Find("PauseButton").SetActive(false);
-        GameObject.Find("PauseMenu").SetActive(true);
+        pauseButton.SetActive(false);
+        pauseMenu.SetActive(true);
         Time.timeScale = 0;
     }
+
+    // unfreezes game and closes pause menu
+    public void UnPauseGame()
+    {
+        pauseButton.SetActive(true);
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+
 
     
 }

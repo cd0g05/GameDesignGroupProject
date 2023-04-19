@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashTimer;
     private Rigidbody2D playerRb;
     private Transform playerTrans;
-    private BoxCollider2D playerBc;
+    private CapsuleCollider2D playerBc;
     [SerializeField] private bool onSlope;
     [SerializeField] private Vector3 lastFramePos;
     public bool movingLeft { get; private set; }
@@ -28,7 +28,7 @@ void Start()
     {
         //initializing private player variables
         playerRb = GetComponent<Rigidbody2D>();
-        playerBc = GetComponent<BoxCollider2D>();
+        playerBc = GetComponent<CapsuleCollider2D>();
         playerTrans = GetComponent<Transform>();
         dashTimer = 5;
         lastFramePos = transform.position;
@@ -38,21 +38,26 @@ void Start()
     void Update()
     {
         //seeing if on ground
-        RaycastHit2D box = Physics2D.BoxCast(playerBc.bounds.center, playerBc.bounds.size, 0, Vector2.down, 0.1f);
-        if (box && (box.collider.gameObject.CompareTag("Ground")))
+        /*RaycastHit2D[] boxes = Physics2D.BoxCastAll(playerBc.bounds.center, playerBc.bounds.size, 0, Vector2.down, 0.01f);
+        foreach (RaycastHit2D hitObject in boxes)
         {
-            onGround = true;
-            onSlope = false;
-        }
-        else if (box && (box.collider.gameObject.CompareTag("Slope")))
-        {
-            onSlope = true;
-            onGround = false;
-        }
-        /*else
-        {
-            onGround = false;
-            onSlope = false;
+            if (hitObject && (hitObject.collider.gameObject.CompareTag("Ground")))
+            {
+                onGround = true;
+                onSlope = false;
+                break;
+            }
+            else if (hitObject && (hitObject.collider.gameObject.CompareTag("Slope")))
+            {
+                onSlope = true;
+                onGround = false;
+                break;
+            }
+            else
+            {
+                onGround = false;
+                onSlope = false;
+            }
         }*/
 
 
@@ -255,7 +260,7 @@ void Start()
         }
         else if (canDoubleJump)
         {
-            playerRb.AddForce(Vector2.up * (jumpForce * .9f), ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.up * (jumpForce * .75f), ForceMode2D.Impulse);
             canDoubleJump = false;
         }
     }
