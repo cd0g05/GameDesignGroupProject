@@ -1995,7 +1995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &496316407
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54509,7 +54509,7 @@ MonoBehaviour:
   jumpForce: 7
   dashForce: 30
   sideBoost: 30
-  maxVelocity: {x: 5, y: 8}
+  maxVelocity: {x: 5, y: 5}
   slowDown: 0.5
   onGround: 0
   dashTimer: 5
