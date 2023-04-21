@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &126066193
 MonoBehaviour:
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &216552128
 GameObject:
@@ -930,7 +930,6 @@ MonoBehaviour:
   mainCam: {fileID: 1660559986}
   levelSelectPos: {x: 0, y: 30}
   inventoryNotFullMessage: {fileID: 848028736}
-  pauseCanvas: {fileID: 0}
   pauseButton: {fileID: 0}
   pauseMenu: {fileID: 0}
 --- !u!4 &453338109
@@ -1109,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &532014888
 MonoBehaviour:
@@ -1407,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &702796058
 GameObject:
@@ -1692,7 +1691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &733707230
 GameObject:
@@ -2583,7 +2582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &1471248330
 GameObject:
@@ -2733,7 +2732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &1484666317
 GameObject:
@@ -2896,7 +2895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
-  abilityName: 
+  item: {fileID: 11400000, guid: 2558dc3850700c5429b50a07b036687f, type: 2}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &1484666323
 MonoBehaviour:
@@ -3511,7 +3510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &1564185225
 GameObject:
@@ -3661,7 +3660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!1 &1660559984
 GameObject:
@@ -4448,7 +4447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 1
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &1844102324
 MonoBehaviour:
@@ -4881,5 +4880,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  abilityName: 
+  item: {fileID: 0}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}

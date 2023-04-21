@@ -9,6 +9,7 @@ public class InventoryMenu : MonoBehaviour
     [SerializeField] private Button continueButton;
     private ScriptableObject gameInevntory;
     public bool playerInventoryFull { get; private set; }
+    public int numSelected;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class InventoryMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int numSelected = 0;
+        numSelected = 0;
 
         foreach (Button item in inventoryButtons)
         {

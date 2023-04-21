@@ -6,7 +6,7 @@ public class InventoryButton : MonoBehaviour
 {
     public bool isSelected { get; private set; }
     public bool isUnlocked;//{ get; private set; }
-    [SerializeField] private string abilityName;
+    [SerializeField] public ItemObject item;
 
     public InventoryObject abilityInventory;
 
@@ -36,7 +36,7 @@ public class InventoryButton : MonoBehaviour
     {
         for (int k = 0; k < abilityInventory.Container.Count; k++)
         {
-            if (abilityInventory.Container[k].item.name.Equals(abilityName))
+            if (abilityInventory.Container[k].Equals(item))
             {
                 isUnlocked = true;
                 return;

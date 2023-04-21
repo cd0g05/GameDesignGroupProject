@@ -15,16 +15,16 @@ public class PlayerInventoryStuff : MonoBehaviour
         // if (!Isystem.GetComponent<InventoryMenu>().playerInventoryFull)
         // {
             
-            if (!b1.GetComponent<InventoryButton>().isSelected)
-            {
-                Inventory.AddItem(item.item, -1);
-            }
-
-        // }
-        if (b1.GetComponent<InventoryButton>().isSelected)
+            if (!b1.GetComponent<InventoryButton>().isSelected && b1.GetComponent<InventoryButton>().isUnlocked && Isystem.GetComponent<InventoryMenu>().numSelected < 3)
             {
                 Inventory.AddItem(item.item, 1);
             }
+
+        // }
+        if (b1.GetComponent<InventoryButton>().isSelected && b1.GetComponent<InventoryButton>().isUnlocked)
+        {
+            Inventory.AddItem(item.item, -1);
+        }
         
     }   
 }
