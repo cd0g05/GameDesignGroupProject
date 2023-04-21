@@ -60,6 +60,15 @@ void Start()
             }
         }*/
 
+        if (onGround || onSlope)
+        {
+            playerRb.drag = 5;
+        }
+        else
+        {
+            playerRb.drag = 0;
+        }
+
 
         //print(playerRb.velocity);
         //moving left and right
@@ -200,6 +209,20 @@ void Start()
         {
             movingRight = false;
             movingLeft = false;
+
+            //slows player down if not pressing any key
+            if (Mathf.Abs(playerRb.velocity.x) > 0)
+            {
+                if (onSlope || onGround)
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.01f, playerRb.velocity.y);
+                }
+
+                else
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.001f, playerRb.velocity.y);
+                }
+            }
         }
 
         if (playerRb.velocity.y < -maxVelocity.y)
@@ -260,6 +283,7 @@ void Start()
         }
         else if (canDoubleJump)
         {
+            playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
             playerRb.AddForce(Vector2.up * (jumpForce * .75f), ForceMode2D.Impulse);
             canDoubleJump = false;
         }
