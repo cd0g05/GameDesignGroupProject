@@ -11,12 +11,24 @@ public class Shooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fireRate = 3.5f;
-        nextFire = Time.time;
+        Fire();
+        //fireRate = 10f;
+        //nextFire = Time.time;
+    }
+
+    public void Fire()
+    {
+        StartCoroutine(Wait());
+        Instantiate(projectile, transform.position, Quaternion.identity);
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSecondsRealtime(2);
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         CheckIfTimeToFire();
     }
@@ -28,5 +40,5 @@ public class Shooter : MonoBehaviour
             Instantiate(projectile, transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
         }
-    }
+    }*/
 }

@@ -9,7 +9,7 @@ public class DamageController : MonoBehaviour
     GameObject healthController;
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {

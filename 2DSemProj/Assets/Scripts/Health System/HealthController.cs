@@ -46,6 +46,7 @@ public class HealthController : MonoBehaviour
             dead = true;
             player.GetComponent<PlayerMovement>().enabled = false;
             player.GetComponent<Transform>().Rotate(new Vector3(0, 0, 90));
+            Time.timeScale = 0;
         }
     }
 
