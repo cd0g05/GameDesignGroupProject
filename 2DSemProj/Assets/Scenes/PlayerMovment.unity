@@ -18901,6 +18901,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 235909158514275304, guid: d8db3616ee26eec4fbb6354a1c9cf61f, type: 3}
+      propertyPath: m_GravityScale
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 235909158514275305, guid: d8db3616ee26eec4fbb6354a1c9cf61f, type: 3}
       propertyPath: jumpForce
       value: 125
@@ -18915,11 +18919,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 235909158514275309, guid: d8db3616ee26eec4fbb6354a1c9cf61f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.7
+      value: -25.6
       objectReference: {fileID: 0}
     - target: {fileID: 235909158514275309, guid: d8db3616ee26eec4fbb6354a1c9cf61f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.8
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 235909158514275309, guid: d8db3616ee26eec4fbb6354a1c9cf61f, type: 3}
       propertyPath: m_LocalPosition.z
