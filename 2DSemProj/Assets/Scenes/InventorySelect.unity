@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 193548807}
   - component: {fileID: 193548811}
   m_Layer: 5
-  m_Name: Button (11)
+  m_Name: Button (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1272,6 +1272,7 @@ GameObject:
   - component: {fileID: 676176247}
   - component: {fileID: 676176249}
   - component: {fileID: 676176250}
+  - component: {fileID: 676176251}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -1382,6 +1383,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 676176249}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 275682961}
         m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
         m_MethodName: SelectOrDeselectItem
@@ -1407,8 +1420,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: fe99683c48970e24a953dc855b6ec739, type: 2}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
+--- !u!114 &676176251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676176245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca665344ceab5d4783c761aa8b8b8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: fe99683c48970e24a953dc855b6ec739, type: 2}
 --- !u!1 &702796058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1583,7 @@ GameObject:
   - component: {fileID: 704911264}
   - component: {fileID: 704911266}
   - component: {fileID: 704911267}
+  - component: {fileID: 704911268}
   m_Layer: 5
   m_Name: Button (5)
   m_TagString: Untagged
@@ -1667,6 +1694,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 704911266}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 275682961}
         m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
         m_MethodName: SelectOrDeselectItem
@@ -1692,8 +1731,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnlocked: 0
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: ebcc9b02dc184354a9364b5352588c80, type: 2}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
+--- !u!114 &704911268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704911262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca665344ceab5d4783c761aa8b8b8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: ebcc9b02dc184354a9364b5352588c80, type: 2}
 --- !u!1 &733707230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,7 +2501,7 @@ GameObject:
   - component: {fileID: 1437225404}
   - component: {fileID: 1437225405}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: Button (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2599,7 +2651,7 @@ GameObject:
   - component: {fileID: 1471248334}
   - component: {fileID: 1471248335}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: Button (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3215,12 +3267,12 @@ RectTransform:
   - {fileID: 1844102319}
   - {fileID: 676176246}
   - {fileID: 704911263}
-  - {fileID: 1564185226}
-  - {fileID: 1471248331}
-  - {fileID: 1437225401}
   - {fileID: 1539100949}
+  - {fileID: 1564185226}
   - {fileID: 2128247410}
+  - {fileID: 1471248331}
   - {fileID: 193548810}
+  - {fileID: 1437225401}
   m_Father: {fileID: 330265327}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3377,7 +3429,7 @@ GameObject:
   - component: {fileID: 1539100952}
   - component: {fileID: 1539100953}
   m_Layer: 5
-  m_Name: Button (9)
+  m_Name: Button (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3527,7 +3579,7 @@ GameObject:
   - component: {fileID: 1564185229}
   - component: {fileID: 1564185230}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: Button (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4747,7 +4799,7 @@ GameObject:
   - component: {fileID: 2128247413}
   - component: {fileID: 2128247414}
   m_Layer: 5
-  m_Name: Button (10)
+  m_Name: Button (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
