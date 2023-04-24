@@ -23,7 +23,12 @@ public class InventoryButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("u"))
+        {
+            CheckToSeeUnlocked();
+            Debug.Log("u is pressed");
+
+        }
     }
 
     public void ChangeSelection()
@@ -35,14 +40,18 @@ public class InventoryButton : MonoBehaviour
     //checks to see if ability is in inventory, if so then button setting is unlocked
     private void CheckToSeeUnlocked()
     {
-        for (int k = 0; k < abilityInventory.Container.Count; k++)
+        for (int k = 0; k < 100; k++)
         {
-            if (abilityInventory.Container[k].Equals(item))
+            if (abilityInventory.Container[k].item.Equals(item))
             {
                 isUnlocked = true;
+                Debug.Log("Unlocked");
+
                 return;
             }
+            Debug.Log("Item checked is " + k);
         }
         isUnlocked = false;
+        Debug.Log("checking");
     }
 }

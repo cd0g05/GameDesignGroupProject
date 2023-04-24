@@ -247,9 +247,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 275682961}
-        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
-        m_MethodName: SelectOrDeselectItem
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 126066191}
@@ -259,9 +259,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 275682963}
-        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
-        m_MethodName: addItem
+      - m_Target: {fileID: 275682961}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: SelectOrDeselectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 126066191}
@@ -283,8 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
-  item: {fileID: 0}
+  isUnlocked: 0
+  item: {fileID: 11400000, guid: 1bb5ccfea1c3a7e42bb49e4015ea6d2a, type: 2}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &126066193
 MonoBehaviour:
@@ -628,6 +628,7 @@ MonoBehaviour:
   - {fileID: 2128247413}
   - {fileID: 193548807}
   continueButton: {fileID: 733707232}
+  numSelected: 0
 --- !u!4 &275682962
 Transform:
   m_ObjectHideFlags: 0
@@ -1071,9 +1072,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 275682961}
-        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
-        m_MethodName: SelectOrDeselectItem
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 532014886}
@@ -1083,9 +1084,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 275682963}
-        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
-        m_MethodName: addItem
+      - m_Target: {fileID: 275682961}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: SelectOrDeselectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 532014886}
@@ -1107,8 +1108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
-  item: {fileID: 0}
+  isUnlocked: 0
+  item: {fileID: 11400000, guid: 2651c6ccd330f8e498955ea49cba64c9, type: 2}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &532014888
 MonoBehaviour:
@@ -2858,9 +2859,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 275682961}
-        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
-        m_MethodName: SelectOrDeselectItem
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1484666321}
@@ -2870,9 +2871,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 275682963}
-        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
-        m_MethodName: addItem
+      - m_Target: {fileID: 275682961}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: SelectOrDeselectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1484666321}
@@ -2894,7 +2895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
   item: {fileID: 11400000, guid: 2558dc3850700c5429b50a07b036687f, type: 2}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &1484666323
@@ -4410,9 +4411,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 275682961}
-        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
-        m_MethodName: SelectOrDeselectItem
+      - m_Target: {fileID: 275682963}
+        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
+        m_MethodName: addItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1844102322}
@@ -4422,9 +4423,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 275682963}
-        m_TargetAssemblyTypeName: PlayerInventoryStuff, Assembly-CSharp
-        m_MethodName: addItem
+      - m_Target: {fileID: 275682961}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: SelectOrDeselectItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1844102322}
@@ -4446,8 +4447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27df4797e2e5b44c966c35c939cfa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
-  item: {fileID: 0}
+  isUnlocked: 0
+  item: {fileID: 11400000, guid: 572790330b6e7ae44b53a113fc86e22b, type: 2}
   abilityInventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
 --- !u!114 &1844102324
 MonoBehaviour:
