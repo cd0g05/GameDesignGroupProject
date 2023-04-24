@@ -60,13 +60,16 @@ void Start()
             }
         }*/
 
+
         if (onGround || onSlope)
         {
             playerRb.drag = 5;
+            maxVelocity.x = 7;
         }
         else
         {
             playerRb.drag = 0;
+            maxVelocity.x = 5;
         }
 
 
@@ -95,9 +98,15 @@ void Start()
             //if they are in the air velocity is slowed down
             else if (!onGround && !onSlope)
             {
-                if (playerRb.velocity.x < (maxVelocity.x - 0.5f))
+                // if they are trying to switch directions
+                if (Mathf.Sign(playerRb.velocity.x) != Mathf.Sign(horizontalInput))
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .5f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * 0.5f), playerRb.velocity.y);
+                }
+
+                else if (playerRb.velocity.x < maxVelocity.x - 0.5f)
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .75f), playerRb.velocity.y);
                 }
                 else
                 {
@@ -111,7 +120,7 @@ void Start()
                 //if player is going up, speed is slower
                 if (transform.position.y > lastFramePos.y)
                 {
-                    if (playerRb.velocity.x < (maxVelocity.x - 2.5f))
+                    if (playerRb.velocity.x < maxVelocity.x - 2.5f)
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -125,7 +134,7 @@ void Start()
                 //player is going down, speed is faster
                 else if (transform.position.y < lastFramePos.y)
                 {
-                    if (playerRb.velocity.x < (maxVelocity.x + 1.5f))
+                    if (playerRb.velocity.x < maxVelocity.x + 1.5f)
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -160,9 +169,15 @@ void Start()
             //if player is in air, speed is slowed
             else if (!onSlope && !onGround)
             {
-                if (playerRb.velocity.x > -maxVelocity.x + 0.5f)
+                // if they are trying to switch directions
+                if (Mathf.Sign(playerRb.velocity.x) != Mathf.Sign(horizontalInput))
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .5f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * 0.5f), playerRb.velocity.y);
+                }
+
+                else if (playerRb.velocity.x > -maxVelocity.x + 0.5f)
+                {
+                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .75f), playerRb.velocity.y);
                 }
                 else
                 {
@@ -176,7 +191,7 @@ void Start()
                 //if player is going up, speed is slower
                 if (transform.position.y > lastFramePos.y)
                 {
-                    if (playerRb.velocity.x > (-maxVelocity.x + 2.5f))
+                    if (playerRb.velocity.x > -maxVelocity.x + 2.5f)
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -189,7 +204,7 @@ void Start()
                 //player is going down, speed is faster
                 else if (transform.position.y < lastFramePos.y)
                 {
-                    if (playerRb.velocity.x > (-maxVelocity.x - 1.5f))
+                    if (playerRb.velocity.x > -maxVelocity.x - 1.5f)
                     {
                         playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .05f), playerRb.velocity.y);
                     }
@@ -215,12 +230,12 @@ void Start()
             {
                 if (onSlope || onGround)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.01f, playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.05f, playerRb.velocity.y);
                 }
 
                 else
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.001f, playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.01f, playerRb.velocity.y);
                 }
             }
         }
