@@ -10,7 +10,6 @@ public class PlayerInventoryStuff : MonoBehaviour
     
     public void addItem(Button b1)
     {
-        Debug.Log("test");
         var item = b1.GetComponent<ItemThink>();
         // if (!Isystem.GetComponent<InventoryMenu>().playerInventoryFull)
         // {

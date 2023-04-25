@@ -26,7 +26,6 @@ public class InventoryButton : MonoBehaviour
         if (Input.GetKeyDown("u"))
         {
             CheckToSeeUnlocked();
-            Debug.Log("u is pressed");
 
         }
     }
@@ -45,13 +44,10 @@ public class InventoryButton : MonoBehaviour
             if (abilityInventory.Container[k].item.Equals(item))
             {
                 isUnlocked = true;
-                Debug.Log("Unlocked");
 
                 return;
             }
-            Debug.Log("Item checked is " + k);
         }
         isUnlocked = false;
-        Debug.Log("checking");
     }
 }
