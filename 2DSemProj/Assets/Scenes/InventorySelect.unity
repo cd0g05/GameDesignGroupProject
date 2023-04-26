@@ -985,6 +985,9 @@ MonoBehaviour:
   inventoryNotFullMessage: {fileID: 848028736}
   pauseButton: {fileID: 0}
   pauseMenu: {fileID: 0}
+  inventoryImage1: {fileID: 0}
+  inventoryImage2: {fileID: 0}
+  inventoryImage3: {fileID: 0}
 --- !u!4 &453338109
 Transform:
   m_ObjectHideFlags: 0

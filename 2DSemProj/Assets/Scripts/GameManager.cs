@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject pauseMenu;
 
+    [SerializeField] private Image inventoryImage1;
+    [SerializeField] private Image inventoryImage2;
+    [SerializeField] private Image inventoryImage3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
         {
             pauseButton.SetActive(true);
+            //inventoryImage1 = 
         }
         pauseMenu.SetActive(false);
     }
