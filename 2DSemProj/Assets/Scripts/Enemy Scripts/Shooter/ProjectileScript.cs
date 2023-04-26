@@ -21,7 +21,10 @@ public class ProjectileScript : MonoBehaviour
         {
             Damage();
             Destroy(gameObject);
-            shooterScript.Fire();
+            if (shooterScript.canFire == true)
+            {
+                shooterScript.Fire();
+            }
         }
     }
 
