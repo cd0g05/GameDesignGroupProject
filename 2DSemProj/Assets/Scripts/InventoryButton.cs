@@ -39,9 +39,9 @@ public class InventoryButton : MonoBehaviour
     //checks to see if ability is in inventory, if so then button setting is unlocked
     private void CheckToSeeUnlocked()
     {
-        for (int k = 0; k < 100; k++)
+        for (int k = 0; k < abilityInventory.Container.Count; k++)
         {
-            if (abilityInventory.Container[k].item.Equals(item))
+            if (abilityInventory.Container[k].item != null && abilityInventory.Container[k].item.Equals(item))
             {
                 isUnlocked = true;
 

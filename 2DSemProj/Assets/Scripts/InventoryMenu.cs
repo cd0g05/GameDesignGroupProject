@@ -19,7 +19,7 @@ public class InventoryMenu : MonoBehaviour
         {
             if (!item.GetComponent<InventoryButton>().isUnlocked)
             {
-                item.GetComponent<Image>().color = Color.grey;
+                item.GetComponent<Image>().color = Color.black;
             }
             else
             {
