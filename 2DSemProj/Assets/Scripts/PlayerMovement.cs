@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 maxVelocity;
     [SerializeField] private float slowDown;
     [SerializeField] private bool onGround;
+    [SerializeField] private float dashing;
     private bool jumped;
     private int count; //for position update
     private bool canDoubleJump;
@@ -275,9 +276,9 @@ void Start()
 
 
         //side dash
-        if (Input.GetKeyDown(KeyCode.Tab) && AbilityIsActive("Dash"))
+        if (Input.GetKey(KeyCode.Tab))// && AbilityIsActive("Dash"))
         {
-            Dash();
+            StartCoroutine(Dash());
         }
     }
 
@@ -315,18 +316,47 @@ void Start()
     }
 
 
-    private void Dash()
+   /* private void Dash()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput > 0 && dashTimer <= 0)
         {
-            playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.right * dashForce, ForceMode2D.Force);
         }
         else if (horizontalInput < 0 && dashTimer <= 0)
         {
-            playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.left * dashForce, ForceMode2D.Force);
         }
         dashTimer = 5;
+    }*/
+
+    private IEnumerator Dash()
+    {
+        float totalForce = 0;
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+        if (horizontalInput > 0 && dashTimer <= 0)
+        {
+            while (totalForce < dashForce)
+            {
+                playerRb.AddForce(Vector2.right * dashing, ForceMode2D.Impulse);
+                yield return new WaitForSeconds(0.1f);
+                totalForce += dashing;
+            }
+            dashTimer = 5;
+        }
+        else if (horizontalInput < 0 && dashTimer <= 0)
+        {
+            while (totalForce < dashForce)
+            {
+                playerRb.AddForce(Vector2.left * dashing, ForceMode2D.Impulse);
+                yield return new WaitForSeconds(0.1f);
+                totalForce += dashing;
+            }
+            dashTimer = 5;
+        }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -1691,11 +1691,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   jumpForce: 125
-  dashForce: 30
+  dashForce: 100
   sideBoost: 30
   maxVelocity: {x: 10, y: 10}
   slowDown: 0
   onGround: 0
+  dashing: 10
   dashTimer: 5
   onSlope: 0
   lastFramePos: {x: 0, y: 0, z: 0}
@@ -2295,6 +2296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2316653296966557805, guid: 4a1fd909a72d4ec4cbb75a158b48add6, type: 3}
+  canFire: 1
 --- !u!1 &980295583
 GameObject:
   m_ObjectHideFlags: 0
