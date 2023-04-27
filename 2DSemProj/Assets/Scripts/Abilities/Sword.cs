@@ -9,6 +9,9 @@ public class Sword : MonoBehaviour
     private Animation swordAnimation;
     private float swingCountdown;
     private bool isAttacking;
+    private int swordDurability;
+    public int limit = 5;
+    public GameObject sword;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +21,7 @@ public class Sword : MonoBehaviour
         damage = 20;
         transform.parent = GameObject.Find("Player").transform;
         transform.localPosition = new Vector2(1.14f, .25f);
+        swordDurability = 0;
     }
 
     // Update is called once per frame
@@ -27,6 +31,8 @@ public class Sword : MonoBehaviour
         {
             swordAnimator.SetTrigger("Swing");
             swingCountdown = .75f;
+            swordDurability = swordDurability + 1;
+            Debug.Log(swordDurability);
             isAttacking = true;
             StartCoroutine(AttackingCountdown());
         }
@@ -35,13 +41,24 @@ public class Sword : MonoBehaviour
         {
             swingCountdown -= Time.deltaTime;
         }
+        if (swordDurability == limit)
+        {
+            StartCoroutine(deletesword());
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
     }
+    private IEnumerator deletesword()
+    {
+        yield return new WaitForSeconds(0.4f);
+        sword.SetActive(false);
 
+
+    }
     private IEnumerator AttackingCountdown()
     {
         yield return new WaitForSeconds(0.2f);
