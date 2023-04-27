@@ -13,9 +13,8 @@ public class PlayerShield : MonoBehaviour
         shieldTimer = 5;
         shieldCooldown = 5;
         transform.parent = GameObject.Find("Player").transform;
-        transform.localPosition = new Vector2(0.55f, 0);
         GameObject.Find("Shield").GetComponent<SpriteRenderer>().enabled = false;
-        GameObject.Find("Shield").GetComponent<BoxCollider2D>().enabled = false;
+        GameObject.Find("Shield").GetComponent<SphereCollider>().enabled = false;
         healthControllerScript = GameObject.Find("HealthController").GetComponent<HealthController>();
     }
 
@@ -30,8 +29,9 @@ public class PlayerShield : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Y) && shieldCooldown <= 0 && !GameObject.Find("HealthController").GetComponent<HealthController>().dead)
         {
-            GameObject.Find("Shield").GetComponent<SpriteRenderer>().enabled = true;
-            GameObject.Find("Shield").GetComponent<BoxCollider2D>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<SphereCollider>().enabled = true;
+            GameObject.Find("Player").GetComponent<SpriteRenderer>().color= new Color(255, 255, 255, (float) 175/255);
             shieldCooldown = 10;
             StartCoroutine(Shield());
             //GameObject.Find("HealthController").GetComponent<HealthController>().UseShield(shieldTimer);
@@ -44,7 +44,16 @@ public class PlayerShield : MonoBehaviour
         healthControllerScript.canTakeDamage = false;
         yield return new WaitForSeconds(shieldTimer);
         GameObject.Find("Shield").GetComponent<SpriteRenderer>().enabled = false;
-        GameObject.Find("Shield").GetComponent<BoxCollider2D>().enabled = false;
+        GameObject.Find("Shield").GetComponent<SphereCollider>().enabled = false;
         healthControllerScript.canTakeDamage = true;
+        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
