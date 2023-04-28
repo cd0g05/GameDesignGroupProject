@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 lastFramePos;
     public bool movingLeft { get; private set; }
     public bool movingRight { get; private set; }
+    public InventoryObject Inventory;
 
 // Start is called before the first frame update
 void Start()
@@ -391,4 +392,16 @@ void Start()
     {
         return false;
     }
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        var item = other.GetComponent<ItemThink>();
+        if (item)
+        {
+            Debug.Log("touching");
+            Inventory.AddItem(item.item, 0);
+            Destroy(other.gameObject);
+        }
+
+    }   
 }
