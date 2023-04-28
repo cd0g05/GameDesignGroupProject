@@ -40,14 +40,12 @@ public class GameManager : MonoBehaviour
             //restarts scene
             if (Input.GetKeyDown(KeyCode.R))
             {
-                print("Restart");
                 RestartScene();
             }
 
             //loads title screen
             if (Input.GetKeyDown(KeyCode.T))
             {
-                print("Title");
                 ToStart();
             }
 
