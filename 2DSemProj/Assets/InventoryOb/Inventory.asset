@@ -12,28 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18dde894587181b4f989df82890d2125, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  Container:
-  - item: {fileID: 11400000, guid: 2558dc3850700c5429b50a07b036687f, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 1bb5ccfea1c3a7e42bb49e4015ea6d2a, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 2651c6ccd330f8e498955ea49cba64c9, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 572790330b6e7ae44b53a113fc86e22b, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: fe99683c48970e24a953dc855b6ec739, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: ebcc9b02dc184354a9364b5352588c80, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 3720bb49a1af5c34fae0489b3de14497, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 07077100d5102b34295a526e9299415c, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: e5fb08c4e24baac44b8ee094d800cc67, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 49b756a7b3f537346b1bbb0be1d1fdb3, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 2d1c191bb54703245a6dd23d5b11811c, type: 2}
-    amount: 0
-  - item: {fileID: 11400000, guid: 698c4d5b98bc5dd449174f12a496c0bd, type: 2}
-    amount: 0
+  Container: []
