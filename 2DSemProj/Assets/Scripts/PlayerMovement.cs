@@ -405,16 +405,5 @@ void Start()
     {
         return false;
     }
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        
-        var item = other.GetComponent<ItemThink>();
-        if (item)
-        {
-            Debug.Log("touching");
-            Inventory.AddItem(item.item, 0);
-            Destroy(other.gameObject);
-        }
-
-    }   
+    
 }
