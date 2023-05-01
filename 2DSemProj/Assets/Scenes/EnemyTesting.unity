@@ -21843,7 +21843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: dashing
-      value: 100
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: dashForce

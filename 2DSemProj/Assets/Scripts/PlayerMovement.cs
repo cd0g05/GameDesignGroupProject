@@ -35,8 +35,8 @@ void Start()
         playerTrans = GetComponent<Transform>();
         dashTimer = 5;
         lastFramePos = transform.position;
-        //Physics2D.IgnoreLayerCollision(3, 7, false);
-        //GameObject.Find("HealthController").GetComponent<HealthController>().canTakeDamage = true;
+        Physics2D.IgnoreLayerCollision(3, 7, false);
+        GameObject.Find("HealthController").GetComponent<HealthController>().canTakeDamage = true;
     }
 
     // Update is called once per frame
@@ -261,6 +261,8 @@ void Start()
             Jump();
         }
 
+        
+
 
         if (dashTimer > 0)
         {
@@ -276,13 +278,12 @@ void Start()
 
     private void FixedUpdate()
     {
-
-
         //side dash
         if (Input.GetKey(KeyCode.Tab))// && AbilityIsActive("Dash"))
         {
             StartCoroutine(Dash());
         }
+
     }
 
     private void Jump()
@@ -336,41 +337,43 @@ void Start()
     private IEnumerator Dash()
     {
         float totalForce = 0;
+        playerRb.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        if (horizontalInput > 0 && dashTimer <= 0)
+        float firsthorizontalInput = Input.GetAxis("Horizontal");
+        if (firsthorizontalInput > 0 && dashTimer <= 0)
         {
-            while (totalForce < dashForce)
+            Physics2D.IgnoreLayerCollision(3, 7, true);
+            while (totalForce < dashForce && firsthorizontalInput == Input.GetAxis("Horizontal"))
             {
                 GameObject.Find("HealthController").GetComponent<HealthController>().canTakeDamage = false;
-                //Physics2D.IgnoreLayerCollision(3, 7, true);
                 playerRb.AddForce(Vector2.right * dashing, ForceMode2D.Impulse);
                 yield return new WaitForSeconds(0.1f);
                 totalForce += dashing;
                 print(totalForce);
             }
-            //Physics2D.IgnoreLayerCollision(3, 7, false);
+            Physics2D.IgnoreLayerCollision(3, 7, false);
             dashTimer = 5;
             yield return new WaitForSeconds(0.25f);
             GameObject.Find("HealthController").GetComponent<HealthController>().canTakeDamage = true;
         }
-        else if (horizontalInput < 0 && dashTimer <= 0)
+        else if (firsthorizontalInput < 0 && dashTimer <= 0)
         {
-            while (totalForce < dashForce)
-            {
-                //Physics2D.IgnoreLayerCollision(3, 7, true);
+            Physics2D.IgnoreLayerCollision(3, 7, true);
+            while (totalForce < dashForce && firsthorizontalInput == Input.GetAxis("Horizontal"))
+            {     
                 GameObject.Find("HealthController").GetComponent<HealthController>().canTakeDamage = false;
                 playerRb.AddForce(Vector2.left * dashing, ForceMode2D.Impulse);
                 yield return new WaitForSeconds(0.1f);
                 totalForce += dashing;
             }
-            //Physics2D.IgnoreLayerCollision(3, 7, false);
+            Physics2D.IgnoreLayerCollision(3, 7, false);
             dashTimer = 5;
             yield return new WaitForSeconds(0.25f);
             GameObject.Find("HealthController").GetComponent<HealthController>().canTakeDamage = true;
         }
-
-        
+        playerRb.constraints = RigidbodyConstraints2D.None;
+        playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        playerTrans.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

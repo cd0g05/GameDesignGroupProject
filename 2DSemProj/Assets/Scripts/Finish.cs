@@ -17,10 +17,10 @@ public class Finish : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         print("Hit");
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.W))
         {
             //implement level complete screen
             //
