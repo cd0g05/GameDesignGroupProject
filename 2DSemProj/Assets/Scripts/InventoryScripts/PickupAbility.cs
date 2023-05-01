@@ -8,7 +8,7 @@ public class PickupAbility : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
+        Debug.Log("The item touched is " + other.gameObject.name);
 
         var item = other.GetComponent<ItemThink>();
         Debug.Log(item);
