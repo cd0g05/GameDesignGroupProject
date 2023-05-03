@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image inventoryImage1;
     [SerializeField] private Image inventoryImage2;
     [SerializeField] private Image inventoryImage3;
+    private GameObject levelButtonText;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         if (SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
         {
+            levelButtonText = GameObject.Find("LevelTitle");
+            print("Level");
             pauseButton.SetActive(true);
+            levelButtonText.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = SceneManager.GetActiveScene().name;
             //inventoryImage1 = 
         }
         pauseMenu.SetActive(false);

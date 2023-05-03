@@ -4375,7 +4375,7 @@ GameObject:
   - component: {fileID: 510567478}
   - component: {fileID: 510567477}
   m_Layer: 5
-  m_Name: Button
+  m_Name: LevelTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67234,7 +67234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3322379530006175594, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.72
+      value: 22.67
       objectReference: {fileID: 0}
     - target: {fileID: 3322379530006175594, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -67268,9 +67268,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3322379530006175604, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_Size.x
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322379530006175604, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5584545
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322379530006175604, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322379530006175604, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322379530006175604, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.1307726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322379530006175604, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3322379530006175606, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
       propertyPath: m_Name
       value: Finish (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643939031936975150, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139484134094784926, guid: 0ce9333086f18cb4da71eae88d7584f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
