@@ -1038,7 +1038,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1067,9 +1067,33 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -8094,33 +8118,33 @@ TextureImporter:
       environment_20: 21300040
       environment_99: 21300198
       environment_32: 21300064
+      environment_268: 21300536
       environment_27: 21300054
-      environment_43: 21300086
       environment_195: 21300390
-      environment_49: 21300098
+      environment_43: 21300086
       environment_169: 21300338
       environment_92: 21300184
-      environment_227: 21300454
+      environment_49: 21300098
       environment_104: 21300208
-      environment_132: 21300264
+      environment_227: 21300454
       environment_188: 21300376
       environment_9: 21300018
       environment_179: 21300358
       environment_51: 21300102
+      environment_132: 21300264
       environment_192: 21300384
-      environment_268: 21300536
+      environment_280: 21300560
       environment_187: 21300374
       environment_223: 21300446
       environment_130: 21300260
       environment_244: 21300488
-      environment_280: 21300560
+      environment_329: 21300658
       environment_196: 21300392
       environment_234: 21300468
       environment_165: 21300330
       environment_243: 21300486
       environment_283: 21300566
       environment_93: 21300186
-      environment_329: 21300658
       environment_167: 21300334
       environment_44: 21300088
       environment_175: 21300350
@@ -8183,18 +8207,19 @@ TextureImporter:
       environment_117: 21300234
       environment_166: 21300332
       environment_64: 21300128
-      environment_69: 21300138
       environment_221: 21300442
-      environment_106: 21300212
+      environment_224: 21300448
+      environment_69: 21300138
       environment_0: 21300000
       environment_204: 21300408
       environment_170: 21300340
+      environment_106: 21300212
       environment_299: 21300598
-      environment_162: 21300324
       environment_116: 21300232
       environment_6: 21300012
+      environment_162: 21300324
+      environment_306: 21300612
       environment_114: 21300228
-      environment_224: 21300448
       environment_142: 21300284
       environment_207: 21300414
       environment_181: 21300362
@@ -8227,10 +8252,9 @@ TextureImporter:
       environment_124: 21300248
       environment_156: 21300312
       environment_79: 21300158
-      environment_306: 21300612
+      environment_313: 21300626
       environment_48: 21300096
       environment_97: 21300194
-      environment_313: 21300626
       environment_16: 21300032
       environment_76: 21300152
       environment_265: 21300530
