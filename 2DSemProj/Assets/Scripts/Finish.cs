@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Finish : MonoBehaviour
 {
+    private Animator doorAnim;
+    private GameObject wCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        doorAnim = GetComponent<Animator>();
+        wCanvas = GetComponentInChildren<RectTransform>().gameObject;
+        wCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,19 +26,32 @@ public class Finish : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         print("Hit");
-        if (collision.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.W))
+        if (collision.gameObject.CompareTag("Player")) // && Input.GetKey(KeyCode.W))
         {
+            doorAnim.SetBool("AtDoor", true);
+            wCanvas.SetActive(true);
             //implement level complete screen
             //
             //
-            
-            string thisLevel = SceneManager.GetActiveScene().name;
-            int nextLevelNum = int.Parse(thisLevel.Substring(6, 1)) + 1;
-            string nextLevel = thisLevel.Substring(0, 6) + nextLevelNum;
-            print(nextLevel);
-            AddNextUnlockedLevel(nextLevel);
-            SceneManager.LoadScene("LevelSelector");
+            if (Input.GetKey(KeyCode.W))
+            {
+                string thisLevel = SceneManager.GetActiveScene().name;
+                int nextLevelNum = int.Parse(thisLevel.Substring(6, 1)) + 1;
+                string nextLevel = thisLevel.Substring(0, 6) + nextLevelNum;
+                print(nextLevel);
+                AddNextUnlockedLevel(nextLevel);
+                SceneManager.LoadScene("LevelSelector");
+            }
 
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            doorAnim.SetBool("AtDoor", false);
+            wCanvas.SetActive(false);
         }
     }
 
@@ -47,4 +66,5 @@ public class Finish : MonoBehaviour
         }
         GameObject.Find("LevelsCompleted").GetComponent<CompletedLevel>().completedLevels.Add(nextLevel);
     }
+
 }
