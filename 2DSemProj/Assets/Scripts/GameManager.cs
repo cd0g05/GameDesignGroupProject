@@ -18,19 +18,35 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image inventoryImage1;
     [SerializeField] private Image inventoryImage2;
     [SerializeField] private Image inventoryImage3;
+    [SerializeField] private InventoryObject globalInventory;
     private GameObject levelButtonText;
+    private string ability1Name;
+    private string ability2Name;
+    private string ability3Name;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //globalInventory = (InventoryObject) AssetDatabase.LoadAssetAtPath("Assets/InventoryOb/Inventory.asset.meta", typeof(InventoryObject));
+        //print(globalInventory.Container[0].item.name);
         Time.timeScale = 1;
         if (SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
         {
+            SetAbilities();
             levelButtonText = GameObject.Find("LevelTitle");
             print("Level");
             pauseButton.SetActive(true);
             levelButtonText.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = SceneManager.GetActiveScene().name;
             //inventoryImage1 = 
+        }
+
+        else if (SceneManager.GetActiveScene().name.Substring(0, 9).Equals("Inventory"))
+        {
+            for (int k = 0; k < globalInventory.Container.Count; k++)
+            {
+                globalInventory.Container[k].amount = 0;
+            }
         }
         pauseMenu.SetActive(false);
     }
@@ -122,6 +138,35 @@ public class GameManager : MonoBehaviour
         pauseButton.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    private void SetAbilities()
+    {
+        for (int k = 0; k < globalInventory.Container.Count; k++)
+        {
+            if (globalInventory.Container[k].amount == 1)
+            {
+                if (ability1Name == null)
+                {
+                    ability1Name = globalInventory.Container[k].item.name;
+                    print(ability1Name);
+                }
+
+                else if (ability2Name == null)
+                {
+                    ability2Name = globalInventory.Container[k].item.name;
+                    print(ability2Name);
+                }
+
+                else if (ability3Name == null)
+                {
+                    ability3Name = globalInventory.Container[k].item.name;
+                    print(ability3Name);
+                }
+            }
+        }
+
+        //GameObject[] gameObjectsinScene = GameObject.FindObjectsOfTypeAll(
     }
 
 
