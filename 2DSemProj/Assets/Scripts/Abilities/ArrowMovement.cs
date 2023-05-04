@@ -28,17 +28,23 @@ public class ArrowMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(col.gameObject);
+            Destroy(gameObject);
+        }
         // if (col.gameObject.CompareTag("Ground"))
         // {
             rb.velocity = Vector2.zero;
             Debug.Log("ground");
+       
             
         // }
     }
 
     public IEnumerator destroying()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(7);
         Destroy(obj);
 
     }

@@ -166,7 +166,24 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //GameObject[] gameObjectsinScene = GameObject.FindObjectsOfTypeAll(
+        GameObject[] gameObjectsinScene = Resources.FindObjectsOfTypeAll<GameObject>();
+        foreach (GameObject thisObject in gameObjectsinScene)
+        {
+            if (thisObject.name.Equals(ability1Name))
+            {
+                thisObject.SetActive(true);
+            }
+
+            else if (thisObject.name.Equals(ability2Name))
+            {
+                thisObject.SetActive(true);
+            }
+
+            else if (thisObject.name.Equals(ability3Name))
+            {
+                thisObject.SetActive(true);
+            }
+        }
     }
 
 

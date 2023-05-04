@@ -21694,6 +21694,7 @@ MonoBehaviour:
   inventoryImage1: {fileID: 0}
   inventoryImage2: {fileID: 0}
   inventoryImage3: {fileID: 0}
+  globalInventory: {fileID: 0}
 --- !u!4 &2094279299
 Transform:
   m_ObjectHideFlags: 0
@@ -21793,6 +21794,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1964058767862638476, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483246672422141425, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7615595781466402259, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -21848,6 +21857,10 @@ PrefabInstance:
     - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: dashForce
       value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350003097027719607, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
