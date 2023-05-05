@@ -7,6 +7,7 @@ public class PlatformCreator : MonoBehaviour
     [SerializeField] private GameObject platform;
     private int numOfPlatformsActive;
     private int maxPlatforms;
+    private bool abiltiyActive;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class PlatformCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && numOfPlatformsActive < maxPlatforms) 
+        if (Input.GetMouseButtonDown(0) && numOfPlatformsActive < maxPlatforms && abiltiyActive)
         {
             Vector2 platformPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             StartCoroutine(DestroyPlatform(Instantiate(platform, platformPos, platform.transform.rotation)));
@@ -29,10 +30,21 @@ public class PlatformCreator : MonoBehaviour
 
     private IEnumerator DestroyPlatform(GameObject platformToDestroy)
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(5);
         //animation
         Destroy(platformToDestroy);
         numOfPlatformsActive--;
 
+    }
+
+    private void Use()
+    {
+        abiltiyActive = true;
+    }
+
+    private IEnumerator AbilityCountdown()
+    {
+        yield return new WaitForSeconds(10);
+        abiltiyActive = false;
     }
 }

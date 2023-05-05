@@ -26,8 +26,13 @@ public class Dash : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Tab) && playerMoveScript.dashTimer <= 0)// && AbilityIsActive("Dash"))
         {
-            StartCoroutine(PlayerDash());
+            Use();
         }
+    }
+
+    public void Use()
+    {
+        StartCoroutine(PlayerDash());
     }
 
     private IEnumerator PlayerDash()

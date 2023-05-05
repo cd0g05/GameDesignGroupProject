@@ -74,6 +74,15 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Transform>().position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
         }
+
+        //abilities
+        if (SceneManager.GetActiveScene().name.Substring(0, 3).Equals("Lev"))
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1) && ability1Name != null)
+            {
+
+            }
+        }
     }
 
     // restarts scene

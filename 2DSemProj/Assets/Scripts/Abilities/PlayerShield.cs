@@ -29,13 +29,18 @@ public class PlayerShield : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Y) && shieldCooldown <= 0 && !GameObject.Find("HealthController").GetComponent<HealthController>().dead)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            gameObject.GetComponent<SphereCollider>().enabled = true;
-            GameObject.Find("Player").GetComponent<SpriteRenderer>().color= new Color(255, 255, 255, (float) 175/255);
-            shieldCooldown = 10;
-            StartCoroutine(Shield());
-            //GameObject.Find("HealthController").GetComponent<HealthController>().UseShield(shieldTimer);
+            Use();
         }
+    }
+
+    public void Use()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<SphereCollider>().enabled = true;
+        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, (float)175 / 255);
+        shieldCooldown = 10;
+        StartCoroutine(Shield());
+        //GameObject.Find("HealthController").GetComponent<HealthController>().UseShield(shieldTimer);
     }
 
     private IEnumerator Shield()

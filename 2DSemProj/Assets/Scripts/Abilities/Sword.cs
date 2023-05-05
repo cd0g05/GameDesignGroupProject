@@ -12,6 +12,7 @@ public class Sword : MonoBehaviour
     private int swordDurability;
     public int limit = 5;
     public GameObject sword;
+    public bool equiped;
 
     // Start is called before the first frame update
     void Start()
@@ -22,35 +23,53 @@ public class Sword : MonoBehaviour
         transform.parent = GameObject.Find("Player").transform;
         transform.localPosition = new Vector2(1.14f, .25f);
         swordDurability = 0;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && swingCountdown <= 0)
+        if (Input.GetMouseButtonDown(0) && swingCountdown <= 0 && equiped)
         {
-            swordAnimator.SetTrigger("Swing");
-            swingCountdown = .75f;
-            swordDurability = swordDurability + 1;
-            Debug.Log(swordDurability);
-            isAttacking = true;
-            StartCoroutine(AttackingCountdown());
+            Use();
         }
 
         if (swingCountdown > 0)
         {
             swingCountdown -= Time.deltaTime;
         }
-        if (swordDurability == limit)
+        if (swordDurability >= limit)
         {
             StartCoroutine(deletesword());
-
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Equip_Unequip()
     {
-        
+        if (equiped)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            equiped = false;
+        }
+
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            equiped = true;
+        }
+    }
+
+    public void Use()
+    {
+        swordAnimator.SetTrigger("Swing");
+        swingCountdown = .75f;
+        swordDurability++;
+        Debug.Log(swordDurability);
+        isAttacking = true;
+        StartCoroutine(AttackingCountdown());
     }
     private IEnumerator deletesword()
     {
