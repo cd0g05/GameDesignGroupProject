@@ -101,6 +101,7 @@ MonoBehaviour:
   player: {fileID: 6219730197638577879}
   canShoot: 1
   travelPos: {x: 0, y: 0}
+  equiped: 0
 --- !u!1 &7615595781154964389
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limit: 5
   sword: {fileID: 7615595781154964389}
+  equiped: 0
 --- !u!111 &7615595781154964379
 Animation:
   m_ObjectHideFlags: 0
@@ -279,7 +281,6 @@ GameObject:
   - component: {fileID: 7615595781466402271}
   - component: {fileID: 7615595781466402256}
   - component: {fileID: -4011064500270245401}
-  - component: {fileID: 6992161438976463125}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -398,7 +399,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.5
@@ -419,16 +420,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57e32dc827b37b4d903881ae32d15ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.8
+  speed: 7
   dashForce: 200
   sideBoost: 30
-  maxVelocity: {x: 7, y: 10}
+  maxVelocity: {x: 7, y: 13}
   slowDown: 1.5
   lastFramePos: {x: 0, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   dashing: 75
   jumped: 0
   canDoubleJump: 0
-  jumpForce: 100
+  jumpForce: 10
   dashTimer: 5
   onSlope: 0
   onGround: 0
@@ -446,8 +450,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10225129, y: -0.00382936}
-  m_Size: {x: 1.3041291, y: 1.6326587}
+  m_Offset: {x: -0.10225122, y: -0.035603207}
+  m_Size: {x: 0.94100034, y: 1.4964855}
   m_Direction: 0
 --- !u!114 &-4011064500270245401
 MonoBehaviour:
@@ -462,19 +466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: {fileID: 11400000, guid: 3b2ab1fc5c1de314c998bb7839f220c7, type: 2}
---- !u!114 &6992161438976463125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7615595781466402270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7678682c3b560de42a9c45854002718c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Inventory: {fileID: 0}
 --- !u!1 &7615595782611586264
 GameObject:
   m_ObjectHideFlags: 0

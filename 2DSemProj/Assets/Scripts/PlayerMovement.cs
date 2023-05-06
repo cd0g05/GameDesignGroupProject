@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 maxVelocity;
     [SerializeField] private float slowDown;
     [SerializeField] private Vector3 lastFramePos;
+    [SerializeField] private LayerMask groundLayer;
     public float dashing;
     public bool jumped;
     private int count; //for position update
@@ -25,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public bool movingLeft { get; private set; }
     public bool movingRight { get; private set; }
     public InventoryObject Inventory;
+    private float timeJumpHeldDown;
+    private float coyoteTime;
 
 // Start is called before the first frame update
 void Start()
@@ -37,49 +40,57 @@ void Start()
         lastFramePos = transform.position;
         Physics2D.IgnoreLayerCollision(3, 7, false);
         GameObject.Find("HealthController").GetComponent<HealthController>().canTakeDamage = true;
+        print("Collider " + playerBc.bounds.size);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //seeing if on ground
-        /*RaycastHit2D[] boxes = Physics2D.BoxCastAll(playerBc.bounds.center, playerBc.bounds.size, 0, Vector2.down, 0.01f);
-        foreach (RaycastHit2D hitObject in boxes)
+
+        //sends capsulecast down a bit to detect if ground is directly below player
+        RaycastHit2D box = Physics2D.CapsuleCast(playerBc.bounds.center, new Vector3(0.65f, 0.7f, 0), CapsuleDirection2D.Vertical, 0, Vector2.down, 0.3f, groundLayer);
+
+        if (box.collider != null)
         {
-            if (hitObject && (hitObject.collider.gameObject.CompareTag("Ground")))
+            print(box.collider.gameObject.name);
+            if (box.collider.gameObject.CompareTag("Ground"))
             {
                 onGround = true;
                 onSlope = false;
-                break;
+                playerRb.gravityScale = 1.5f;
             }
-            else if (hitObject && (hitObject.collider.gameObject.CompareTag("Slope")))
+            else if ((box.collider.gameObject.CompareTag("Slope")))
             {
                 onSlope = true;
                 onGround = false;
-                break;
+                playerRb.gravityScale = 1.5f;
             }
-            else
-            {
-                onGround = false;
-                onSlope = false;
-            }
-        }*/
+        }
 
+        else
+        {
+            onGround = false;
+            onSlope = false;
+        }
 
+        // setting variable for when player is on ground or off ground
         if (onGround || onSlope)
         {
             playerRb.drag = 5;
             maxVelocity.x = 7;
+            coyoteTime = 0;
+            jumped = false;
         }
         else
         {
             playerRb.drag = 0;
             maxVelocity.x = 5;
+            coyoteTime += Time.deltaTime;
         }
 
-        if (jumped && playerRb.velocity.y <= 0)
+        if (playerRb.velocity.y <= 0)
         {
-            playerRb.gravityScale = 2;
+            playerRb.gravityScale = 3;
         }
 
 
@@ -97,7 +108,7 @@ void Start()
             {
                 if (playerRb.velocity.x < maxVelocity.x)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2((horizontalInput * speed), playerRb.velocity.y);
                 }
                 else
                 {
@@ -111,21 +122,21 @@ void Start()
                 // if they are trying to switch directions
                 if (Mathf.Sign(playerRb.velocity.x) != Mathf.Sign(horizontalInput))
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * 0.5f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2((horizontalInput * speed), playerRb.velocity.y);
                 }
 
-                else if (playerRb.velocity.x < maxVelocity.x - 0.5f)
+                else if (playerRb.velocity.x < maxVelocity.x)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .75f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2((horizontalInput * speed), playerRb.velocity.y);
                 }
                 else
                 {
-                    playerRb.velocity = new Vector2(maxVelocity.x - 0.5f, playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(maxVelocity.x, playerRb.velocity.y);
                 }
             }
 
             //player is on a slope
-            else if (onSlope)
+            /*else if (onSlope)
             {
                 //if player is going up, speed is slower
                 if (transform.position.y > lastFramePos.y)
@@ -153,7 +164,7 @@ void Start()
                         playerRb.velocity = playerRb.velocity;
                     }
                 }
-            }
+            }*/
 
             movingLeft = false;
             movingRight = true;
@@ -168,7 +179,7 @@ void Start()
             {
                 if (playerRb.velocity.x > -maxVelocity.x)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2((horizontalInput * speed), playerRb.velocity.y);
                 }
                 else
                 {
@@ -182,21 +193,21 @@ void Start()
                 // if they are trying to switch directions
                 if (Mathf.Sign(playerRb.velocity.x) != Mathf.Sign(horizontalInput))
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * 0.5f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2((horizontalInput * speed ), playerRb.velocity.y);
                 }
 
-                else if (playerRb.velocity.x > -maxVelocity.x + 0.5f)
+                else if (playerRb.velocity.x > -maxVelocity.x)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x + (horizontalInput * speed * .75f), playerRb.velocity.y);
+                    playerRb.velocity = new Vector2((horizontalInput * speed), playerRb.velocity.y);
                 }
                 else
                 {
-                    playerRb.velocity = new Vector2(-maxVelocity.x + 0.5f, playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(-maxVelocity.x, playerRb.velocity.y);
                 }
             }
 
             //player is on a slope
-            else if (onSlope)
+            /*else if (onSlope)
             {
                 //if player is going up, speed is slower
                 if (transform.position.y > lastFramePos.y)
@@ -223,7 +234,7 @@ void Start()
                         playerRb.velocity = playerRb.velocity;
                     }
                 }
-            }
+            }*/
 
 
 
@@ -240,12 +251,12 @@ void Start()
             {
                 if (onSlope || onGround)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.05f, playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.15f, playerRb.velocity.y);
                 }
 
                 else
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.01f, playerRb.velocity.y);
+                    playerRb.velocity = new Vector2(playerRb.velocity.x / 1.05f, playerRb.velocity.y);
                 }
             }
         }
@@ -259,6 +270,11 @@ void Start()
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+        }
+
+        if ((Input.GetKeyUp(KeyCode.Space) || timeJumpHeldDown > 1) && playerRb.velocity.y > 0)
+        {
+            SlowJump();
         }
 
         
@@ -276,15 +292,14 @@ void Start()
         count++;
     }
 
-
     private void Jump()
     {
-        if (onGround || onSlope)
+        if ((onGround || onSlope) || (coyoteTime < 0.2f && !jumped))
         {
             jumped = true;
             playerRb.gravityScale = 1.5f;
-            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            float horizontalInput = Input.GetAxis("Horizontal");
+            playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
+            /*float horizontalInput = Input.GetAxis("Horizontal");
             if (horizontalInput != 0)
             {
                 if (horizontalInput >= 0.01f)
@@ -297,15 +312,20 @@ void Start()
                     playerRb.AddForce(Vector2.left * sideBoost, ForceMode2D.Force);
                     print("left");
                 }
-            }
+            }*/
             canDoubleJump = true;
         }
+    }
+
+    private void SlowJump()
+    {
+        playerRb.velocity = new Vector2(playerRb.velocity.x, playerRb.velocity.y * .5f);
     }
 
 
     
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -331,11 +351,6 @@ void Start()
         {
             onSlope = false;
         }
-    }
-
-    public bool AbilityIsActive(string name)
-    {
-        return false;
-    }
+    }*/
     
 }
