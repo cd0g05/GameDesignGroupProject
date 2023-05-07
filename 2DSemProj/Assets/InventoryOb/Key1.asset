@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18dde894587181b4f989df82890d2125, type: 3}
-  m_Name: Inventory
+  m_Script: {fileID: 11500000, guid: a79a3f8f75038484d88b9f2fb51417dd, type: 3}
+  m_Name: Key1
   m_EditorClassIdentifier: 
-  Container: []
+  prefab: {fileID: 0}
+  name: 
+  type: 2
