@@ -7,7 +7,11 @@ public class PlayerInventoryStuff : MonoBehaviour
 {
     public InventoryObject Inventory;
     public GameObject Isystem;
-    
+    [SerializeField] public AudioSource selectSound;
+    [SerializeField] public AudioSource deselectSound;
+
+
+
     public void addItem(Button b1)
     {
         var item = b1.GetComponent<ItemThink>();
@@ -16,12 +20,14 @@ public class PlayerInventoryStuff : MonoBehaviour
             
             if (!b1.GetComponent<InventoryButton>().isSelected && b1.GetComponent<InventoryButton>().isUnlocked && Isystem.GetComponent<InventoryMenu>().numSelected < 3)
             {
+                selectSound.Play();
                 Inventory.AddItem(item.item, 1);
             }
 
         // }
         if (b1.GetComponent<InventoryButton>().isSelected && b1.GetComponent<InventoryButton>().isUnlocked)
         {
+            deselectSound.Play();
             Inventory.AddItem(item.item, -1);
         }
         

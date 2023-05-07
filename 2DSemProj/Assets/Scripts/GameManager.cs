@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera mainCam;
     [SerializeField] private Vector2 levelSelectPos;
     [SerializeField] private GameObject inventoryNotFullMessage;
+    [SerializeField] public AudioSource forwardSound;
 
     // for pause menu
     [SerializeField] private GameObject pauseButton;
@@ -96,18 +97,23 @@ public class GameManager : MonoBehaviour
     public void ToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelector");
+        forwardSound.Play();
     }
 
     //moves to start scene
     public void ToStart()
     {
         SceneManager.LoadScene("Title");
+        forwardSound.Play();
+
     }
 
     //moves to controls scene
     public void ToControlsScene()
     {
         SceneManager.LoadScene("Controls Scene");
+        forwardSound.Play();
+
     }
 
 
@@ -130,6 +136,7 @@ public class GameManager : MonoBehaviour
     public void InventoryToLevel()
     {
         SceneManager.LoadScene(GameObject.Find("LevelSelected").GetComponent<LevelSelected>().selectedLevel);
+        forwardSound.Play();
     }
 
 

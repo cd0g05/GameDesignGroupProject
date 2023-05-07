@@ -8,6 +8,8 @@ public class Finish : MonoBehaviour
 {
     private Animator doorAnim;
     private GameObject wCanvas;
+    [SerializeField] public AudioSource nextLevelSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class Finish : MonoBehaviour
             //
             if (Input.GetKey(KeyCode.W))
             {
+                nextLevelSound.Play();
                 string thisLevel = SceneManager.GetActiveScene().name;
                 int nextLevelNum = int.Parse(thisLevel.Substring(6, 1)) + 1;
                 string nextLevel = thisLevel.Substring(0, 6) + nextLevelNum;

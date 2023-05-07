@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slowDown;
     [SerializeField] private Vector3 lastFramePos;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] public AudioSource jumpSound;
+
     public float dashing;
     public bool jumped;
     private int count; //for position update
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public InventoryObject Inventory;
     private float timeJumpHeldDown;
     private float coyoteTime;
+
 
 // Start is called before the first frame update
 void Start()
@@ -106,6 +109,7 @@ void Start()
             //if they are on ground
             if (onGround)
             {
+
                 if (playerRb.velocity.x < maxVelocity.x)
                 {
                     playerRb.velocity = new Vector2((horizontalInput * speed), playerRb.velocity.y);
@@ -297,6 +301,7 @@ void Start()
         if ((onGround || onSlope) || (coyoteTime < 0.2f && !jumped))
         {
             jumped = true;
+            jumpSound.Play();
             playerRb.gravityScale = 1.5f;
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
             /*float horizontalInput = Input.GetAxis("Horizontal");

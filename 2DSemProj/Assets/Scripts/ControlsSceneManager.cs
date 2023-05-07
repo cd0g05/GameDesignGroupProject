@@ -11,6 +11,7 @@ public class ControlsSceneManager : MonoBehaviour
     [SerializeField] private GameObject inLevelText;
     [SerializeField] private GameObject backButton;
     [SerializeField] private GameObject nextButton;
+    [SerializeField] private AudioSource forwardSound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,8 @@ public class ControlsSceneManager : MonoBehaviour
 
     public void Back()
     {
+        forwardSound.Play();
+
         if (inventoryText.activeInHierarchy)
         {
             movementText.SetActive(true);
@@ -43,6 +46,8 @@ public class ControlsSceneManager : MonoBehaviour
 
     public void Next()
     {
+        forwardSound.Play();
+
         if (movementText.activeInHierarchy)
         {
             inventoryText.SetActive(true);

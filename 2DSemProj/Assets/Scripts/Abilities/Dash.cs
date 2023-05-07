@@ -7,6 +7,7 @@ public class Dash : MonoBehaviour
     private PlayerMovement playerMoveScript;
     private Rigidbody2D playerRb;
     private Transform playerTrans;
+    [SerializeField] private AudioSource dashSound;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,7 @@ public class Dash : MonoBehaviour
         float firsthorizontalInput = Input.GetAxis("Horizontal");
         if (firsthorizontalInput > 0)
         {
+            dashSound.Play();
             Physics2D.IgnoreLayerCollision(3, 7, true);
             while (totalForce < playerMoveScript.dashForce && firsthorizontalInput == Input.GetAxis("Horizontal"))
             {

@@ -15,6 +15,10 @@ public class HealthController : MonoBehaviour
 
     [SerializeField] private Image[] hearts;
     [SerializeField] private GameObject fatilityText;
+    [SerializeField] public AudioSource deathSound;
+    [SerializeField] public AudioSource damageSound;
+    [SerializeField] public AudioSource restartSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +46,7 @@ public class HealthController : MonoBehaviour
 
         if (playerHealth <= 0 && !dead)
         {
+            deathSound.Play();
             fatilityText.SetActive(true);
             dead = true;
             player.GetComponent<PlayerMovement>().enabled = false;
@@ -52,11 +57,13 @@ public class HealthController : MonoBehaviour
 
     public void Restart()
     {
+        restartSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void PlayerDamage()
     {
+        damageSound.Play();
         StartCoroutine(StartIFrame());
     }
 

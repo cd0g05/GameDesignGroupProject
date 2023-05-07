@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    [SerializeField] private AudioSource swordSound;
     private float damage;
     private Animator swordAnimator;
     private Animation swordAnimation;
@@ -64,6 +65,7 @@ public class Sword : MonoBehaviour
 
     public void Use()
     {
+        swordSound.Play();
         swordAnimator.SetTrigger("Swing");
         swingCountdown = .75f;
         swordDurability++;
