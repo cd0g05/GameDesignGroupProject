@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 lastFramePos;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] public AudioSource jumpSound;
-    [SerializeField] public Animator Animator;
 
     public float dashing;
     public bool jumped;
@@ -50,10 +49,7 @@ void Start()
     // Update is called once per frame
     void Update()
     {
-        if (onGround)
-        {
-                Animator.SetBool("IsJumping", false);
-        }
+
         //sends capsulecast down a bit to detect if ground is directly below player
         RaycastHit2D box = Physics2D.CapsuleCast(playerBc.bounds.center, new Vector3(0.65f, 0.7f, 0), CapsuleDirection2D.Vertical, 0, Vector2.down, 0.3f, groundLayer);
 
@@ -104,17 +100,16 @@ void Start()
         //print(playerRb.velocity);
         //moving left and right
         float horizontalInput = Input.GetAxis("Horizontal");
-        Animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
-
         if (horizontalInput > 0) //moving right
         {
             //facing right
-            playerTrans.localScale = new Vector3(-Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
+            playerTrans.localScale = new Vector3(Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
 
             //moving based on velocity
             //if they are on ground
             if (onGround)
             {
+
                 if (playerRb.velocity.x < maxVelocity.x)
                 {
                     playerRb.velocity = new Vector2((horizontalInput * speed), playerRb.velocity.y);
@@ -181,7 +176,7 @@ void Start()
         else if (horizontalInput < 0) //moving left
         {
             //facing left
-            playerTrans.localScale = new Vector3(Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
+            playerTrans.localScale = new Vector3(-Mathf.Abs(playerTrans.localScale.x), playerTrans.localScale.y, playerTrans.localScale.z);
 
             //moving based on velocity
             if (onGround)
@@ -305,7 +300,6 @@ void Start()
     {
         if ((onGround || onSlope) || (coyoteTime < 0.2f && !jumped))
         {
-            Animator.SetBool("IsJumping", true);
             jumped = true;
             jumpSound.Play();
             playerRb.gravityScale = 1.5f;
