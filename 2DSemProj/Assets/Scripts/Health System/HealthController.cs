@@ -24,7 +24,7 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         UpdateHealth();
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Knight");
         dead = false;
         canTakeDamage = true;
         fatilityText.SetActive(false);
