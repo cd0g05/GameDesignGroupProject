@@ -21832,9 +21832,49 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Time
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Emitting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.48307037
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.48386765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431667887836475034, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.19355011
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483246672422141424, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: dashPower
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483246672422141424, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: dashingTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6483246672422141425, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7615595781466402259, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: m_RootOrder
@@ -21885,12 +21925,24 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: airGrav
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: dashing
-      value: 175
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: dashForce
-      value: 225
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615595781466402271, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
+      propertyPath: groundGrav
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8350003097027719607, guid: 5b6977310471b494484bcbf0ec215e94, type: 3}
       propertyPath: m_IsActive

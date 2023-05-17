@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3446129496444615754
 MonoBehaviour:
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f674762b1a73c8b4b90c9f913ba86c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   dashSound: {fileID: -5539634864537020261}
 --- !u!82 &-5539634864537020261
 AudioSource:
@@ -142,3 +143,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+  dashCooldown: 0
+  dashPower: 45
+  dashingTime: 0.2
+>>>>>>> Stashed changes

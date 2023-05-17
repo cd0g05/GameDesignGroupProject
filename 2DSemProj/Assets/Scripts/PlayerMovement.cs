@@ -12,9 +12,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slowDown;
     [SerializeField] private Vector3 lastFramePos;
     [SerializeField] private LayerMask groundLayer;
+<<<<<<< Updated upstream
     [SerializeField] public AudioSource jumpSound;
     [SerializeField] public Animator Animator;
 
+=======
+    [SerializeField] private float groundGrav;
+    [SerializeField] private float airGrav;
+>>>>>>> Stashed changes
     public float dashing;
     public bool jumped;
     private int count; //for position update
@@ -64,13 +69,13 @@ void Start()
             {
                 onGround = true;
                 onSlope = false;
-                playerRb.gravityScale = 1.5f;
+                playerRb.gravityScale = groundGrav;
             }
             else if ((box.collider.gameObject.CompareTag("Slope")))
             {
                 onSlope = true;
                 onGround = false;
-                playerRb.gravityScale = 1.5f;
+                playerRb.gravityScale = groundGrav;
             }
         }
 
@@ -95,9 +100,9 @@ void Start()
             coyoteTime += Time.deltaTime;
         }
 
-        if (playerRb.velocity.y <= 0)
+        if (playerRb.velocity.y < -.1f)
         {
-            playerRb.gravityScale = 3;
+            playerRb.gravityScale = airGrav;
         }
 
 
@@ -307,8 +312,12 @@ void Start()
         {
             Animator.SetBool("IsJumping", true);
             jumped = true;
+<<<<<<< Updated upstream
             jumpSound.Play();
             playerRb.gravityScale = 1.5f;
+=======
+            playerRb.gravityScale = groundGrav;
+>>>>>>> Stashed changes
             playerRb.velocity = new Vector2(playerRb.velocity.x, jumpForce);
             /*float horizontalInput = Input.GetAxis("Horizontal");
             if (horizontalInput != 0)
